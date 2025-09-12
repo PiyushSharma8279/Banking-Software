@@ -19,6 +19,10 @@ function PopularDestination() {
       img: "https://images.pexels.com/photos/707677/pexels-photo-707677.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
   ];
+   const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
 
   return (
     <div className="p-6">
@@ -33,7 +37,8 @@ function PopularDestination() {
         {destinations.map((dest, index) => (
           <div
             key={index}
-            className="relative group overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-transform transform hover:scale-105"
+             onClick={() => handleClick()}
+            className="relative group overflow-hidden cursor-pointer rounded-xl shadow-md hover:shadow-xl transition-transform transform hover:scale-105"
           >
             <img
               src={dest.img}

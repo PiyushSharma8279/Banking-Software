@@ -62,6 +62,11 @@ function Details() {
     }
   ];
 
+   const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+
   return (
     <div className="p-6">
       <h2 className="text-[#246e73] text-3xl font-semibold mb-1">
@@ -75,6 +80,7 @@ function Details() {
         {offers.map((offer, index) => (
           <div
             key={index}
+            onClick={()=> handleClick()}
             className="rounded-xl shadow-lg border border-gray-100 bg-white hover:shadow-xl transition duration-300 p-4 flex flex-col justify-between"
           >
             {/* From & To */}

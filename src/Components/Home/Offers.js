@@ -22,6 +22,11 @@ function Offers() {
      },
   ];
 
+   const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+
   return (
     <>
       <div className="p-4">
@@ -37,6 +42,7 @@ function Offers() {
           {offers.map((offer, index) => (
             <div
               key={index}
+              onClick={()=>handleClick()}
               className=" h-56 w-full rounded-lg overflow-hidden bg-cover bg-center"
               style={{
                 backgroundImage:

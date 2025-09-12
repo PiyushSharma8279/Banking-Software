@@ -12,6 +12,11 @@ function TrendingCities() {
     { from: "DELHI", to: "Varanasi", img: "https://www.adivaha.com/demo/whitelabel12/images/varanasi-bus.png" },
   ];
 
+   const handleClick = (city) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    console.log("Clicked city:", city.to);
+  };
+
   return (
     <div className="p-6">
       <h2 className="text-[#40858a] text-3xl font-semibold mb-2 ">
@@ -26,7 +31,8 @@ function TrendingCities() {
         {cities.map((city, index) => (
           <div
             key={index}
-            className="flex bg-white rounded-xs overflow-hidden shadow-md hover:shadow-xl transition"
+             onClick={() => handleClick(city)}
+            className="flex bg-white rounded-xs overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition"
           >
             
             <img
