@@ -2,12 +2,12 @@ import React from "react";
 
 function Offers() {
   const offers = [
-    { title: "CIBIL report" },
-    { title: "ITR download" },
-    { title: "Banking download" },
-    { title: "GST certificate download" },
-    { title: "GST returns download" },
-    { title: "Blurry documents finder" },
+    { title: "Stockholm, Sweden" },
+    { title: "Copehagen, Denmark" },
+    { title: "Oslo, Norway" },
+    { title: "Tokyo, Japan" },
+    { title: "Singapore, Singapore" },
+    { title: "Bangkok, Thailand" },
   ];
 
   return (

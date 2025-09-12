@@ -1,73 +1,70 @@
-import React, { useState } from "react";
+import React from "react";
+import { FaPlane, FaHotel, FaBus, FaUsers } from "react-icons/fa";
 
 function ApplicationForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    document: null,
-  });
-
-  const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: files ? files[0] : value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Submitted Data:", formData);
-    alert("Application submitted!");
-  };
-
   return (
-    <div className="bg-[#246e73] h-[300px] text-white p-4  flex flex-col justify-center ">
-      <h2 className="text-xl font-bold mb-4">Application Form</h2>
+    <div className="bg-[#246e73] w-full p-4 flex flex-col justify-center items-center relative">
+      {/* Top tabs overlapping */}
+      <div className="relative z-20 -mb-6">
+        <div className="flex flex-wrap gap-3 md:gap-5 shadow-lg bg-white text-gray-800 px-4 py-3 rounded-xl font-medium">
+          <div className="flex items-center gap-2 cursor-pointer hover:underline">
+            <FaPlane className="text-lg" />
+            <h2>Flights</h2>
+          </div>
+          <div className="flex items-center gap-2 cursor-pointer hover:underline">
+            <FaHotel className="text-lg" />
+            <h2>Hotels</h2>
+          </div>
+          <div className="flex items-center gap-2 cursor-pointer hover:underline">
+            <FaBus className="text-lg" />
+            <h2>Bus</h2>
+          </div>
+          <div className="flex items-center gap-2 cursor-pointer hover:underline">
+            <FaUsers className="text-lg" />
+            <h2>Group</h2>
+          </div>
+        </div>
+      </div>
 
-      <form onSubmit={handleSubmit} className="space-y-3">
-        {/* Name */}
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full p-2 rounded-md text-black outline-none"
-          required
-        />
+      {/* Form container */}
+      <div className="flex flex-col md:flex-row flex-wrap md:flex-nowrap gap-4 md:gap-0 py-6 md:py-10 bg-white rounded-lg px-4 md:px-10 w-full max-w-5xl relative z-10">
 
-        {/* Email */}
-        <input
-          type="email"
-          name="email"
-          placeholder="Email Address"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full p-2 rounded-md text-black outline-none"
-          required
-        />
+        <div className="flex-1 p-4 border border-gray-200 rounded-md">
+          <p className="text-sm">FROM</p>
+          <h2 className="text-xl md:text-2xl font-medium">DELHI</h2>
+          <p className="text-sm">DEL, Delhi Indira Gandhi Intl</p>
+        </div>
 
-        {/* Upload */}
-        <input
-          type="file"
-          name="document"
-          onChange={handleChange}
-          className="w-full p-2 rounded-md text-black bg-white cursor-pointer"
-          accept=".pdf,.jpg,.png"
-        />
+        <div className="flex-1 p-4 border border-gray-200 rounded-md">
+          <p className="text-sm">TO</p>
+          <h2 className="text-xl md:text-2xl font-medium">MUMBAI</h2>
+          <p className="text-sm">BOM, Chhatrapati Shivaji</p>
+        </div>
 
-        {/* Submit */}
-        <button
-          type="submit"
-          className="w-full bg-white text-[#246e73] font-semibold py-2 rounded-md hover:bg-gray-100 transition"
-        >
-          Submit
-        </button>
-      </form>
+        <div className="flex-1 p-4 border border-gray-200 rounded-md">
+          <p className="text-sm">Departure</p>
+          <h2 className="text-xl md:text-2xl font-medium">13 Sep'25</h2>
+          <p className="text-sm">Saturday</p>
+        </div>
+
+        <div className="flex-1 p-4 border border-gray-200 rounded-md">
+          <p className="text-sm">Return</p>
+          <h2 className="text-xl md:text-2xl font-medium">14 Sep'25</h2>
+          <p className="text-sm">Sunday</p>
+        </div>
+
+        <div className="flex-1 p-4 border border-gray-200 rounded-md">
+          <p className="text-sm">TRAVELLER & CLASS</p>
+          <h2 className="text-base md:text-xl font-medium">1 Traveller</h2>
+        </div>
+      </div>
+      <div className="relative z-20 -mt-6">
+        <div className="flex flex-wrap gap-3 md:gap-5 shadow-lg bg-green-600 text-gray-800 px-4 py-3 rounded-xl font-medium">
+          Search Flights
+          </div>
+        </div>
     </div>
   );
 }
 
 export default ApplicationForm;
-
