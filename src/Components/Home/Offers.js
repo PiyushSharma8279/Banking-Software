@@ -2,12 +2,24 @@ import React from "react";
 
 function Offers() {
   const offers = [
-    { title: "Stockholm, Sweden" },
-    { title: "Copehagen, Denmark" },
-    { title: "Oslo, Norway" },
-    { title: "Tokyo, Japan" },
-    { title: "Singapore, Singapore" },
-    { title: "Bangkok, Thailand" },
+    { title: "Stockholm, Sweden",
+      img : "https://www.adivaha.com/demo/whitelabel12/images/secton03img02.png"
+     },
+    { title: "Copehagen, Denmark" ,
+      img: "https://www.adivaha.com/demo/whitelabel12/images/secton03img01.png"
+    },
+    { title: "Oslo, Norway",
+      img: "https://www.adivaha.com/demo/whitelabel12/images/secton03img03.png"
+     },
+    { title: "Tokyo, Japan",
+      img : "https://www.adivaha.com/demo/whitelabel12/images/secton03img04.png"
+     },
+    { title: "Singapore, Singapore",
+      img: "https://www.adivaha.com/demo/whitelabel12/images/secton03img05.png"
+     },
+    { title: "Bangkok, Thailand",
+      img: "https://www.adivaha.com/demo/whitelabel12/images/secton03img06.png"
+     },
   ];
 
   return (
@@ -28,7 +40,7 @@ function Offers() {
               className=" h-56 w-full rounded-lg overflow-hidden bg-cover bg-center"
               style={{
                 backgroundImage:
-                  "url('https://www.adivaha.com/demo/whitelabel12/images/secton03img01.png')",
+                  `url(${offer.img})`,
               }}
             >
               {/* Text overlay */}

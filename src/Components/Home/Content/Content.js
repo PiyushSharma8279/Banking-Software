@@ -3,26 +3,43 @@ import Sidebar from "../Sidebar";
 import ApplicationForm from "../ApplicationForm";
 import Offers from "../Offers";
 import Details from "../Details";
+import PopularDestination from "../PopularDestination";
+import TrendingCities from "../TrendingCities";
+import Header from "../../Header/Header";
+import Footer from "../../Footer/Footer";
 
 function Content() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="h-screen flex flex-col">
-      {/* Sidebar */}
+    
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
 
-      {/* Content - shifted by sidebar */}
+      
       <div
-        className={`transition-all duration-300 mt-[72px] ${
-          isOpen ? "ml-56" : "ml-16"
-        }`}
+        className={`transition-all duration-300 mt-[72px] 
+          ${isOpen ? "ml-0 sm:ml-56" : "ml-0 sm:ml-16"}
+        `}
       >
-       <ApplicationForm/>
-       <Offers/>
-       <Details/>
+        <Header isOpen={isOpen} setIsOpen={setIsOpen} />
+
         
+        <ApplicationForm />
+        <Offers />
+        <Details />
+        <PopularDestination />
+        <TrendingCities />
+        <Footer/>
       </div>
+
+      
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-40 sm:hidden z-30"
+          onClick={() => setIsOpen(false)}
+        ></div>
+      )}
     </div>
   );
 }
