@@ -1,15 +1,14 @@
-import React, { useState,useEffect } from "react";
-import Sidebar from "../Sidebar";
-import ApplicationForm from "../ApplicationForm";
-import Offers from "../Offers";
-import PopularDestination from "../PopularDestination";
-import Header from "../../Header/Header";
-import Footer from "../../Footer/Footer";
-import DomesticPackages from "../Pakages/DomesticPakages";
-import InternationalPakages from "../Pakages/InternationalPakages";
-import PanIndia from "../Pakages/PanIndia";
+import React, { useState, useEffect } from "react";
+import Sidebar from "../../Components/Home/Sidebar";
+import Header from "../../Components/Header/Header";
+import Footer from "../../Components/Footer/Footer";
+import DomesticPackages from "../../Components/Home/Pakages/DomesticPakages";
+import InternationalPakages from "../../Components/Home/Pakages/InternationalPakages";
+import PanIndia from "../../Components/Home/Pakages/PanIndia";
 
-function Content() {
+
+
+function ShowPakages() {
     useEffect(() => {
     window.scrollTo(0, 0);
   },[]);
@@ -27,14 +26,12 @@ function Content() {
         `}
       >
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
-
-        
-        <ApplicationForm />
-        <Offers />
         <DomesticPackages/>
         <InternationalPakages/>
         <PanIndia/>
-        <PopularDestination />
+
+        
+        
         <Footer/>
       </div>
 
@@ -49,4 +46,4 @@ function Content() {
   );
 }
 
-export default Content;
+export default ShowPakages;

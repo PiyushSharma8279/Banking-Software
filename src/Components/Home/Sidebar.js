@@ -8,14 +8,16 @@ import {
   FaInfoCircle,
   FaUserCircle,
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar({ isOpen, setIsOpen }) {
+  const navigate = useNavigate()
   const menus = [
-    { name: "Home", icon: <FaHome /> },
-    { name: "Bookings", icon: <FaCalendarCheck /> },
+    { name: "Home", icon: <FaHome />, path: "/" },
+    { name: "Pakage", icon: <FaCalendarCheck />, path: "/login" },
     { name: "Tasks", icon: <FaCheckCircle /> },
     { name: "Messages", icon: <FaEnvelope /> },
-    { name: "About Us", icon: <FaInfoCircle /> },
+    { name: "About Us", icon: <FaInfoCircle />, path: "/about" },
     { name: "Profile", icon: <FaUserCircle /> },
   ];
 
@@ -40,6 +42,7 @@ function Sidebar({ isOpen, setIsOpen }) {
         {menus.map((menu, index) => (
           <div
             key={index}
+             onClick={() => navigate(menu.path)} 
             className="flex items-center gap-2 h-12 px-5 rounded-md cursor-pointer hover:bg-teal-500 transition-colors"
           >
             <span className="text-xl">{menu.icon}</span>

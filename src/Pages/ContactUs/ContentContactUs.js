@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../../Components/Home/Sidebar";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
@@ -6,6 +6,9 @@ import ContactUsForm from "./ContactForm";
 
 
 function ContentContactUs() {
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  },[]);
   const [isOpen, setIsOpen] = useState(false);
 
   return (

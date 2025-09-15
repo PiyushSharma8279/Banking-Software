@@ -35,7 +35,7 @@ function Header({ isOpen, setIsOpen }) {
             <div className="flex items-center gap-1 cursor-pointer" onClick={()=> navigate('/contact-us')}>
               <FaEnvelope /> <p className="text-[14px]">Contact Us</p>
             </div>
-            <div className="flex items-center gap-1 cursor-pointer" onClick={()=> navigate('/pakages')}>
+            <div className="flex items-center gap-1 cursor-pointer" onClick={()=> navigate('/login')}>
               <FaCheckCircle /> <p className="text-[14px]">Pakages</p>
             </div>
             {/* <div className="flex items-center gap-1 cursor-pointer">

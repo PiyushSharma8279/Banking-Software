@@ -52,7 +52,7 @@ function InternationalPakages() {
             {/* Button */}
             <div className="p-4 flex flex-col justify-between">
               <button className="mt-4 w-full border border-[#246e73] text-[#246e73] px-4 py-2 rounded-lg font-medium hover:bg-[#246e73] hover:text-white transition"
-              onClick={()=> navigate('/pakages')}
+              onClick={()=> navigate('/login')}
               >
                 LOGIN TO CHECK
               </button>
