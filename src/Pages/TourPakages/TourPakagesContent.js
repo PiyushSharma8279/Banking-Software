@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
+
+
+import TourPakages from "./TourPakages";
 import Sidebar from "../../Components/Home/Sidebar";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
-import DomesticPackages from "../../Components/Home/Pakages/DomesticPakages";
-import InternationalPakages from "../../Components/Home/Pakages/InternationalPakages";
-import PanIndia from "../../Components/Home/Pakages/PanIndia";
 
 
-
-function ShowPakages() {
+function TourPakagesContent() {
     useEffect(() => {
     window.scrollTo(0, 0);
   },[]);
@@ -26,9 +25,7 @@ function ShowPakages() {
         `}
       >
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
-        <DomesticPackages/>
-        <InternationalPakages/>
-        <PanIndia/>
+        <TourPakages/>
 
         
         
@@ -46,4 +43,4 @@ function ShowPakages() {
   );
 }
 
-export default ShowPakages;
+export default TourPakagesContent;

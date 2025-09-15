@@ -4,7 +4,8 @@ import Homepage from "./Pages/Homepage";
 import ContentContactUs from "./Pages/ContactUs/ContentContactUs";
 import ContentPakage from "./Pages/PakagesCategory/ContentPakage";
 import ContentAbout from "./Pages/About/ContentAbout";
-import ShowPakages from "./Pages/PakagesCategory/ShowPakages";
+import ShowPakages from "./Pages/PakagesCategory/AfterLogin/ShowPakages";
+import TourPakagesContent from "./Pages/TourPakages/TourPakagesContent";
 
 
 
@@ -19,6 +20,7 @@ function App() {
     <Route path="/login" element={<ContentPakage/>}/>
     <Route path="/about" element={<ContentAbout/>}/>
     <Route path="/pakages" element={<ShowPakages/>}/>
+    <Route path="/tour-packages/:category" element={<TourPakagesContent/>}/>
 
 
 
