@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import Sidebar from "../Sidebar";
-import ApplicationForm from "../ApplicationForm";
-import Offers from "../Offers";
-import PopularDestination from "../PopularDestination";
-import Header from "../../Header/Header";
-import Footer from "../../Footer/Footer";
-import DomesticPackages from "../Pakages/DomesticPakages";
-import InternationalPakages from "../Pakages/InternationalPakages";
-import PanIndia from "../Pakages/PanIndia";
+import Sidebar from "../../Components/Home/Sidebar";
+import Header from "../../Components/Header/Header";
+import Footer from "../../Components/Footer/Footer";
+import ContactUsForm from "./ContactForm";
 
-function Content() {
+
+function ContentContactUs() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -24,14 +20,10 @@ function Content() {
         `}
       >
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
+        <ContactUsForm/>
 
         
-        <ApplicationForm />
-        <Offers />
-        <DomesticPackages/>
-        <InternationalPakages/>
-        <PanIndia/>
-        <PopularDestination />
+        
         <Footer/>
       </div>
 
@@ -46,4 +38,4 @@ function Content() {
   );
 }
 
-export default Content;
+export default ContentContactUs;
