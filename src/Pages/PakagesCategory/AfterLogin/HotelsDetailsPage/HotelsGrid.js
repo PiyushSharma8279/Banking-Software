@@ -96,7 +96,7 @@ function HotelCard({ name, address, img, rating }) {
                         <span className="mr-2">📍</span>
                         {address}
                     </p>
-                    <button className="mt-3 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
+                    <button className="mt-3 w-full bg-[#246e73] text-white py-2 rounded hover:bg-[#02a9b5] transition"
                         onClick={() => setShowModal(true)}
                     >
                         BOOK NOW
@@ -105,9 +105,9 @@ function HotelCard({ name, address, img, rating }) {
             </div>
 
             {showModal && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center z-50">
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-start md:items-center z-50 overflow-y-auto">
                     {/* Modal Box */}
-                    <div className="bg-[#083d56] text-white p-6 rounded-lg w-[90%] max-w-4xl relative mt-[50px] overflow-y-auto">
+                    <div className="bg-[#083d56] text-white p-6 rounded-lg w-[95%] md:w-[90%] max-w-4xl relative mt-6 md:mt-20 overflow-y-auto max-h-[90vh]">
                         {/* Close Btn */}
                         <button
                             className="absolute top-2 right-2 text-white text-xl font-bold"
@@ -116,66 +116,71 @@ function HotelCard({ name, address, img, rating }) {
                             ✖
                         </button>
 
-                        <h2 className="text-center text-2xl font-bold mb-6">
+                        <h2 className="text-center text-lg md:text-2xl font-bold mb-6">
                             Booking Now
                         </h2>
 
                         {/* FORM */}
                         <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {/* Destination */}
+                            {/* Hotel Place */}
                             <div className="flex flex-col gap-1">
                                 <label>Hotel Place *</label>
                                 <input type="text" className="p-2 rounded text-black" />
                             </div>
 
-                            {/* Nights */}
+                            {/* First Guest */}
                             <div className="flex flex-col gap-1">
-                                <label>
-                                    First Guest Name *</label>
-                                <input type="number" className="p-2 rounded text-black" />
+                                <label>First Guest Name *</label>
+                                <input type="text" className="p-2 rounded text-black" />
                             </div>
 
                             {/* Hotel Category */}
                             <div className="flex flex-col gap-1">
                                 <label>Hotel Category *</label>
                                 <select className="p-2 rounded text-black">
+                                    <option>Select Hotel Category</option>
                                     <option>3 Star</option>
                                     <option>4 Star</option>
                                     <option>5 Star</option>
                                 </select>
                             </div>
 
-                            {/* Rooms */}
+                            {/* Room Type */}
                             <div className="flex flex-col gap-1">
                                 <label>Room Type *</label>
                                 <select className="p-2 rounded text-black">
+                                     <option>Select Room Type</option>
                                     <option>Base</option>
                                     <option>Second</option>
-                                    <option>third</option>
+                                    <option>Third</option>
                                 </select>
                             </div>
+
+                            {/* No of Nights */}
                             <div className="flex flex-col gap-1">
                                 <label>No of Nights *</label>
-                                <input type="Number" className="p-2 rounded text-black" />
-                            </div>
-                            <div className="flex flex-col gap-1">
-                                <label>No of Rooms *</label>
-                                <input type="Number" className="p-2 rounded text-black" />
+                                <input type="number" className="p-2 rounded text-black" />
                             </div>
 
-                            {/* Check In Date */}
+                            {/* No of Rooms */}
+                            <div className="flex flex-col gap-1">
+                                <label>No of Rooms *</label>
+                                <input type="number" className="p-2 rounded text-black" />
+                            </div>
+
+                            {/* Check In */}
                             <div className="flex flex-col gap-1">
                                 <label>Check In Date *</label>
                                 <input type="date" className="p-2 rounded text-black" />
                             </div>
 
-                            {/* Check Out Date */}
+                            {/* Check Out */}
                             <div className="flex flex-col gap-1">
                                 <label>Check Out Date *</label>
                                 <input type="date" className="p-2 rounded text-black" />
                             </div>
 
-                            {/* Visa Type */}
+                            {/* Extra Bed */}
                             <div className="flex flex-col gap-1">
                                 <label>Extra Bed / Child with Bed *</label>
                                 <select className="p-2 rounded text-black">
@@ -185,50 +190,44 @@ function HotelCard({ name, address, img, rating }) {
                                     <option>4</option>
                                     <option>5</option>
                                     <option>6</option>
-
                                 </select>
                             </div>
 
-                            
+                            {/* Meal Plan */}
                             <div className="flex flex-col gap-1">
-                                <label>Meal Plan*</label>
+                                <label>Meal Plan *</label>
                                 <select className="p-2 rounded text-black">
                                     <option>Room with no meal</option>
                                     <option>Breakfast</option>
                                     <option>Breakfast and Dinner</option>
                                     <option>Breakfast with lunch dinner</option>
-
                                 </select>
                             </div>
 
-                           
-                          
-                            
-
-                            
-                           
-
-                            
-
-                            
-                            <div className="flex flex-col gap-1 col-span-2">
+                            {/* Mobile */}
+                            <div className="flex flex-col gap-1 col-span-1 md:col-span-2">
                                 <label>Mobile No *</label>
                                 <input type="text" className="p-2 rounded text-black" />
                             </div>
 
-                            
-                            <div className="flex flex-col gap-1 col-span-2">
+                            {/* Additional Info */}
+                            <div className="flex flex-col gap-1 col-span-1 md:col-span-2">
                                 <label>Additional Information</label>
                                 <textarea className="p-2 rounded text-black"></textarea>
                             </div>
 
-                            
-                            <button className="col-span-2 bg-[#246e73] py-2 rounded text-white font-bold hover:bg-white hover:text-[#246e73] transition">
+                            {/* Submit */}
+                            <button
+                                type="submit"
+                                className="col-span-1 md:col-span-2 bg-[#246e73] py-2 rounded text-white font-bold hover:bg-white hover:text-[#246e73] transition"
+                            >
                                 Submit
                             </button>
                         </form>
                     </div>
                 </div>
+
+
 
             )}
         </>

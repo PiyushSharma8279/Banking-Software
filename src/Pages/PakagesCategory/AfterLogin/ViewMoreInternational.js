@@ -47,9 +47,9 @@ function ViewMoreInternational() {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center z-50 overflow-y-auto">
           {/* Modal Box */}
-          <div className="bg-[#083d56] text-white p-6 rounded-lg w-[90%] max-w-4xl relative mt-[50px] overflow-y-auto">
+          <div className="bg-[#083d56] text-white p-6 rounded-lg w-[95%] md:w-[90%] max-w-4xl relative mt-[30px] md:mt-[50px] overflow-y-auto max-h-[90vh]">
             {/* Close Btn */}
             <button
               className="absolute top-2 right-2 text-white text-xl font-bold"
@@ -58,7 +58,7 @@ function ViewMoreInternational() {
               ✖
             </button>
 
-            <h2 className="text-center text-2xl font-bold mb-6">
+            <h2 className="text-center text-xl md:text-2xl font-bold mb-6">
               International Query Form
             </h2>
 
@@ -67,19 +67,19 @@ function ViewMoreInternational() {
               {/* Destination */}
               <div className="flex flex-col gap-1">
                 <label>Destination *</label>
-                <input type="text" className="p-2 rounded text-black" />
+                <input type="text" className="p-2 rounded text-black w-full" />
               </div>
 
               {/* Nights */}
               <div className="flex flex-col gap-1">
                 <label>No of Nights *</label>
-                <input type="number" className="p-2 rounded text-black" />
+                <input type="number" className="p-2 rounded text-black w-full" />
               </div>
 
               {/* Hotel Category */}
               <div className="flex flex-col gap-1">
                 <label>Hotel Category *</label>
-                <select className="p-2 rounded text-black">
+                <select className="p-2 rounded text-black w-full">
                   <option>3 Star</option>
                   <option>4 Star</option>
                   <option>5 Star</option>
@@ -89,25 +89,25 @@ function ViewMoreInternational() {
               {/* Rooms */}
               <div className="flex flex-col gap-1">
                 <label>No of Rooms *</label>
-                <input type="number" className="p-2 rounded text-black" />
+                <input type="number" className="p-2 rounded text-black w-full" />
               </div>
 
-              {/* Check In Date */}
+              {/* Check In */}
               <div className="flex flex-col gap-1">
                 <label>Check In Date *</label>
-                <input type="date" className="p-2 rounded text-black" />
+                <input type="date" className="p-2 rounded text-black w-full" />
               </div>
 
-              {/* Check Out Date */}
+              {/* Check Out */}
               <div className="flex flex-col gap-1">
                 <label>Check Out Date *</label>
-                <input type="date" className="p-2 rounded text-black" />
+                <input type="date" className="p-2 rounded text-black w-full" />
               </div>
 
               {/* Visa Type */}
               <div className="flex flex-col gap-1">
                 <label>Visa Type *</label>
-                <select className="p-2 rounded text-black">
+                <select className="p-2 rounded text-black w-full">
                   <option>Tourist</option>
                   <option>Business</option>
                 </select>
@@ -116,7 +116,7 @@ function ViewMoreInternational() {
               {/* Insurance */}
               <div className="flex flex-col gap-1">
                 <label>Insurance *</label>
-                <select className="p-2 rounded text-black">
+                <select className="p-2 rounded text-black w-full">
                   <option>Yes</option>
                   <option>No</option>
                 </select>
@@ -125,13 +125,13 @@ function ViewMoreInternational() {
               {/* Extra Bed */}
               <div className="flex flex-col gap-1">
                 <label>No of Extra Bed</label>
-                <input type="number" className="p-2 rounded text-black" />
+                <input type="number" className="p-2 rounded text-black w-full" />
               </div>
 
               {/* Meal Plan */}
               <div className="flex flex-col gap-1">
                 <label>Meal Plan *</label>
-                <select className="p-2 rounded text-black">
+                <select className="p-2 rounded text-black w-full">
                   <option>Breakfast</option>
                   <option>Half Board</option>
                   <option>Full Board</option>
@@ -141,7 +141,7 @@ function ViewMoreInternational() {
               {/* Child Without Bed */}
               <div className="flex flex-col gap-1">
                 <label>Child Without Bed</label>
-                <select className="p-2 rounded text-black">
+                <select className="p-2 rounded text-black w-full">
                   <option>Yes</option>
                   <option>No</option>
                 </select>
@@ -150,31 +150,35 @@ function ViewMoreInternational() {
               {/* Transfer */}
               <div className="flex flex-col gap-1">
                 <label>Transfer</label>
-                <select className="p-2 rounded text-black">
+                <select className="p-2 rounded text-black w-full">
                   <option>Included</option>
                   <option>Excluded</option>
                 </select>
               </div>
 
-              {/* Mobile Number */}
-              <div className="flex flex-col gap-1 col-span-2">
+              {/* Mobile */}
+              <div className="flex flex-col gap-1 col-span-1 md:col-span-2">
                 <label>Mobile No *</label>
-                <input type="text" className="p-2 rounded text-black" />
+                <input type="text" className="p-2 rounded text-black w-full" />
               </div>
 
               {/* Additional Info */}
-              <div className="flex flex-col gap-1 col-span-2">
+              <div className="flex flex-col gap-1 col-span-1 md:col-span-2">
                 <label>Additional Information</label>
-                <textarea className="p-2 rounded text-black"></textarea>
+                <textarea className="p-2 rounded text-black w-full"></textarea>
               </div>
 
               {/* Submit */}
-              <button className="col-span-2 bg-[#246e73] py-2 rounded text-white font-bold hover:bg-white hover:text-[#246e73] transition">
+              <button
+                type="submit"
+                className="col-span-1 md:col-span-2 bg-[#246e73] py-2 rounded text-white font-bold hover:bg-white hover:text-[#246e73] transition"
+              >
                 Submit
               </button>
             </form>
           </div>
         </div>
+
 
       )}
     </div>
