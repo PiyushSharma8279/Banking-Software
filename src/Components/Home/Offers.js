@@ -43,7 +43,7 @@ function Offers() {
             <div
               key={index}
               onClick={()=>handleClick()}
-              className=" h-56 w-full rounded-lg overflow-hidden bg-cover bg-center"
+              className=" h-56 w-full rounded-lg overflow-hidden bg-cover bg-center cursor-pointer"
               style={{
                 backgroundImage:
                   `url(${offer.img})`,

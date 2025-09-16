@@ -38,6 +38,8 @@ function ViewMorePan() {
         },
     ];
 
+     const createSlug = (title) => title.toLowerCase().replace(/\s+/g, "-");
+
     return (
         <div className="px-4 sm:px-6  py-10 bg-gray-50">
             {/* Heading */}
@@ -69,7 +71,7 @@ function ViewMorePan() {
                         {/* Button */}
                         <div className="p-4 flex flex-col justify-between">
                             <button className="mt-4 w-full border border-[#246e73]  bg-[#246e73] text-white px-4 py-2 rounded-full font-medium hover:bg-white hover:text-[#246e73] transition"
-                                onClick={() => navigate('/login')}
+                                onClick={() => navigate(`/hotels/${createSlug(pkg.title)}`)}
                             >
                                 View More
                             </button>
