@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate  } from "react-router-dom";
 import HIMACHAL from "../../Images/himachal.jpg";
 import KARNATAKA from "../../Images/karnataka.jpeg";
 import KASHMIR from "../../Images/kashmir.jpeg";
@@ -10,7 +10,9 @@ import UTTARAKHAND from "../../Images/uttrakhand.jpeg";
 import ANDAMAN from "../../Images/andman.jpg";
 
 function TourPakages() {
+    const navigate = useNavigate();
     const { category } = useParams();
+
     const categoryName = category.replace(/-/g, " ").toUpperCase();
 
     // Map category name → image
@@ -170,7 +172,9 @@ function TourPakages() {
                                         </h4>
                                         <p className="text-xs md:text-sm text-gray-500">Per Person</p>
 
-                                        <button className="mt-3 md:mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 text-sm md:text-base">
+                                        <button className="mt-3 md:mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 text-sm md:text-base"
+                                         onClick={() => navigate(`/package/${pkg.code}`)}
+                                        >
                                             VIEW DETAILS
                                         </button>
                                     </div>

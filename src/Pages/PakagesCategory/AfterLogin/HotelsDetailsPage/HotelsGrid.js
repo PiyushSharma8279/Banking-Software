@@ -117,7 +117,7 @@ function HotelCard({ name, address, img, rating }) {
                         </button>
 
                         <h2 className="text-center text-2xl font-bold mb-6">
-                            Hotel Reservation Form
+                            Booking Now
                         </h2>
 
                         {/* FORM */}
