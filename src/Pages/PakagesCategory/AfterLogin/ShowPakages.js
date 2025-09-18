@@ -12,7 +12,7 @@ function ShowPakages() {
   }, []);
   const [isOpen, setIsOpen] = useState(false);
 
-  // Slideshow state
+ 
   const slides = [
     {
       img: "https://5.imimg.com/data5/SELLER/Default/2023/2/SK/LF/XQ/148616/domestic-tour-packages-services.jpg", 
@@ -33,7 +33,7 @@ function ShowPakages() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 3000); // 2 seconds
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, []);
@@ -49,7 +49,7 @@ function ShowPakages() {
       >
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
 
-        {/* Slideshow Banner */}
+         
         <div>
           <div
             className="w-full h-96 bg-cover bg-center flex items-center justify-center transition-all duration-700"
@@ -57,14 +57,14 @@ function ShowPakages() {
               backgroundImage: `url(${slides[currentSlide].img})`,
             }}
           >
-            {/* Text overlay */}
+            
             <h2 className="text-center text-white font-bold text-4xl px-6 py-2 rounded-lg bg-black/40">
               {slides[currentSlide].title}
             </h2>
           </div>
         </div>
 
-        {/* Page Content */}
+         
         <ViewMoreDomestic />
         <ViewMoreInternational />
         <ViewMorePan />

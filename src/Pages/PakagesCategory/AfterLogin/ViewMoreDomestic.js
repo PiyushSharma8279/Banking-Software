@@ -14,7 +14,7 @@ function ViewMoreDomestic() {
     { title: "UTTARAKHAND", img: "https://t2tworld.com/wp-content/uploads/2023/07/image-4-2.png" },
   ];
 
-  // helper to create slug
+  
   const createSlug = (title) => title.toLowerCase().replace(/\s+/g, "-");
 
   return (

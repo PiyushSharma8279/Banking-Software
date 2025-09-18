@@ -35,7 +35,7 @@ function InternationalPakages() {
             key={index}
             className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition duration-300 group"
           >
-            {/* Image with zoom-out on hover */}
+             
             <div className="overflow-hidden">
               <img
                 src={pkg.img}
@@ -44,12 +44,12 @@ function InternationalPakages() {
               />
             </div>
 
-            {/* Title */}
+             
             <h3 className="text-center text-lg font-semibold text-gray-800 py-3 border-t">
               {pkg.title}
             </h3>
 
-            {/* Button */}
+            
             <div className="p-4 flex flex-col justify-between">
               <button className="mt-4 w-full border border-[#246e73] text-[#246e73] px-4 py-2 rounded-lg font-medium hover:bg-[#246e73] hover:text-white transition"
               onClick={()=> navigate('/login')}

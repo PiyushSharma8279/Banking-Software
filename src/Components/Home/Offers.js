@@ -37,7 +37,7 @@ function Offers() {
           Last Minute Offers From Selected Destination
         </h2>
 
-        {/* Responsive grid */}
+       
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {offers.map((offer, index) => (
             <div
@@ -49,7 +49,7 @@ function Offers() {
                   `url(${offer.img})`,
               }}
             >
-              {/* Text overlay */}
+               
               <h2 className="  text-center text-white font-semibold text-lg bg-black/50 px-3 py-1 rounded">
                 {offer.title}
               </h2>

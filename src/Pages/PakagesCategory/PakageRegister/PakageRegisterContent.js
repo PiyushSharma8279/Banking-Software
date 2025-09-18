@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import PackageDetails from "./PackageDetails";
+import PakageRegister from "./PakageRegister";
 import Sidebar from "../../../Components/Home/Sidebar";
 import Header from "../../../Components/Header/Header";
 import Footer from "../../../Components/Footer/Footer";
 
 
-function PakageDetailsContent() {
+
+function PakageRegisterContent() {
     useEffect(() => {
     window.scrollTo(0, 0);
   },[]);
@@ -15,14 +16,18 @@ function PakageDetailsContent() {
     <div className="h-screen flex flex-col">
     
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+
+      
       <div
         className={`transition-all duration-300 mt-[72px] 
           ${isOpen ? "ml-0 sm:ml-56" : "ml-0 sm:ml-16"}
         `}
       >
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
-        <PackageDetails/>
+        <PakageRegister/>
 
+        
+        
         <Footer/>
       </div>
 
@@ -37,4 +42,4 @@ function PakageDetailsContent() {
   );
 }
 
-export default PakageDetailsContent;
+export default PakageRegisterContent;

@@ -12,14 +12,14 @@ function ContactUsForm() {
                     backgroundImage: `url(${contact})`,
                 }}
             >
-                {/* Text overlay */}
+                
                 <h2 className="text-center text-white font-semibold text-3xl  px-6 py-2 rounded-lg">
                     Contact Us
                 </h2>
             </div>
             <div className="max-w-7xl mx-auto px-6 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    {/* Left Section - Contact Info */}
+                     
                     <div>
                         <h2 className="text-2xl font-bold mb-4">Get In Touch / Contact Us:</h2>
                         <p className="mb-6 text-gray-600">
@@ -27,7 +27,7 @@ function ContactUsForm() {
                             We will answer your questions as soon as possible.
                         </p>
 
-                        {/* Address */}
+                        
                         <div className="flex items-start mb-4">
                             <FaMapMarkerAlt className="text-green-700 text-2xl mr-3 mt-1" />
                             <p>
@@ -36,7 +36,7 @@ function ContactUsForm() {
                             </p>
                         </div>
 
-                        {/* Phone */}
+                         
                         <div className="flex items-start mb-4">
                             <FaPhoneAlt className="text-green-700 text-2xl mr-3 mt-1" />
                             <p>
@@ -45,7 +45,7 @@ function ContactUsForm() {
                             </p>
                         </div>
 
-                        {/* Email */}
+                         
                         <div className="flex items-start mb-4">
                             <FaEnvelope className="text-green-700 text-2xl mr-3 mt-1" />
                             <p>
@@ -55,7 +55,7 @@ function ContactUsForm() {
                         </div>
                     </div>
 
-                    {/* Right Section - Form */}
+                    
                     <div>
                         <h2 className="text-2xl font-bold mb-4">Send Us A Message</h2>
                         <form className="space-y-4">

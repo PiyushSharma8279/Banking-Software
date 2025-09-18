@@ -8,6 +8,7 @@ import ShowPakages from "./Pages/PakagesCategory/AfterLogin/ShowPakages";
 import TourPakagesContent from "./Pages/TourPakages/TourPakagesContent";
 import ContentHotelsGrid from "./Pages/PakagesCategory/AfterLogin/HotelsDetailsPage/ContentHotelsGrid";
 import PakageDetailsContent from "./Pages/TourPakages/TourPakageDetailspage/PakageDetailsContent";
+import PakageRegisterContent from "./Pages/PakagesCategory/PakageRegister/PakageRegisterContent";
 
 
 
@@ -20,6 +21,7 @@ function App() {
     <Route path="/" element={<Homepage/>} />
     <Route path="/contact-us" element={<ContentContactUs/>}/>
     <Route path="/login" element={<ContentPakage/>}/>
+    <Route path="/register" element={<PakageRegisterContent/>}/>
     <Route path="/about" element={<ContentAbout/>}/>
     <Route path="/pakages" element={<ShowPakages/>}/>
     <Route path="/tour-packages/:category" element={<TourPakagesContent/>}/>

@@ -15,7 +15,7 @@ function TourPakages() {
 
     const categoryName = category.replace(/-/g, " ").toUpperCase();
 
-    // Map category name → image
+    
     const images = {
         HIMACHAL,
         KARNATAKA,
@@ -28,7 +28,7 @@ function TourPakages() {
     };
     const bgImage = images[categoryName] || HIMACHAL;
 
-    // Sections data
+   
     const sections = [
         { id: "sec1", label: "04 Nights 05 Days" },
         { id: "sec2", label: "05 Nights 06 Days" },
@@ -36,7 +36,7 @@ function TourPakages() {
         { id: "sec4", label: "07 Nights 08 Days" },
     ];
 
-    // refs for scrollspy
+    
     const sectionRefs = useRef({});
     const [activeSection, setActiveSection] = useState(sections[0].id);
 
@@ -75,7 +75,7 @@ function TourPakages() {
 
     return (
         <>
-            {/* Banner */}
+            
             <div
                 className="w-full h-64 md:h-96 bg-cover bg-center flex items-center justify-center"
                 style={{ backgroundImage: `url(${bgImage})` }}
@@ -85,7 +85,7 @@ function TourPakages() {
                 </h2>
             </div>
 
-            {/* About Section */}
+            
             <div className="p-4 shadow-md m-4 md:m-6">
                 <h2 className="text-xl md:text-2xl font-bold py-2">About {categoryName}</h2>
                 <p className="text-sm md:text-base leading-relaxed">
@@ -96,7 +96,7 @@ function TourPakages() {
             </div>
 
             <div className="flex flex-col md:flex-row mt-10 px-4 md:px-6">
-                {/* Sidebar for Desktop */}
+                
                 <aside className="hidden md:block w-1/4 sticky top-24 h-fit bg-white shadow-md rounded-lg p-4">
                     <h2 className="font-bold text-lg mb-3">PACKAGES</h2>
                     <ul className="space-y-2 text-gray-700 font-medium">
@@ -115,7 +115,7 @@ function TourPakages() {
                     </ul>
                 </aside>
 
-                {/* Mobile Horizontal Menu */}
+                
                 <div className="md:hidden sticky top-16 z-20 bg-white shadow-md overflow-x-auto whitespace-nowrap flex gap-4 px-4 py-2">
                     {sections.map((s) => (
                         <button
@@ -131,7 +131,7 @@ function TourPakages() {
                     ))}
                 </div>
 
-                {/* Right Cards */}
+                
                 <main className="w-full md:w-3/4 md:ml-6 space-y-12 mt-4 md:mt-0 ">
                     {sections.map((s, i) => (
                         <section

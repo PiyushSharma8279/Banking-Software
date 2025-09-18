@@ -46,7 +46,7 @@ function PopularDestination() {
               className="w-full h-64 object-cover"
             />
 
-            {/* Overlay with button */}
+             
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex flex-col justify-end p-4">
               <h3 className="text-white font-semibold text-lg mb-2">
                 {dest.title}

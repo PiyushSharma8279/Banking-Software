@@ -34,13 +34,13 @@ function ApplicationForm() {
 
   return (
     <>
-      <div className="bg-[#246e73] w-full p-5 flex flex-col justify-center items-center relative">
+      <div className="bg-[#246e73] w-full p-5 flex flex-col justify-center mt-6 items-center relative">
 
         <div className="relative z-20 md:-mb-6 -mb-3">
           <div className="flex flex-wrap gap-3 md:gap-5 shadow-lg bg-white text-gray-800 px-4 py-4 rounded-xl font-medium">
             <div
               onClick={() => setActiveTab("flights")}
-              className={`flex items-center gap-2 cursor-pointer hover:underline ${activeTab === "flights" ? "text-green-600 font-bold" : ""
+              className={`flex items-center gap-2 cursor-pointer  ${activeTab === "flights" ? "text-green-600 font-bold" : ""
                 }`}
             >
               <FaPlane className="text-green-600" />
@@ -48,7 +48,7 @@ function ApplicationForm() {
             </div>
             <div
               onClick={() => setActiveTab("hotels")}
-              className={`flex items-center gap-2 cursor-pointer hover:underline ${activeTab === "hotels" ? "text-blue-600 font-bold" : ""
+              className={`flex items-center gap-2 cursor-pointer  ${activeTab === "hotels" ? "text-blue-600 font-bold" : ""
                 }`}
             >
               <FaHotel className="text-blue-600" />
@@ -56,7 +56,7 @@ function ApplicationForm() {
             </div>
             <div
               onClick={() => setActiveTab("bus")}
-              className={`flex items-center gap-2 cursor-pointer hover:underline ${activeTab === "bus" ? "text-yellow-600 font-bold" : ""
+              className={`flex items-center gap-2 cursor-pointer  ${activeTab === "bus" ? "text-yellow-600 font-bold" : ""
                 }`}
             >
               <FaBus className="text-yellow-600" />
@@ -64,7 +64,7 @@ function ApplicationForm() {
             </div>
             <div
               onClick={() => setActiveTab("group")}
-              className={`flex items-center gap-2 cursor-pointer hover:underline ${activeTab === "group" ? "text-purple-600 font-bold" : ""
+              className={`flex items-center gap-2 cursor-pointer  ${activeTab === "group" ? "text-purple-600 font-bold" : ""
                 }`}
             >
               <FaUsers className="text-purple-600" />
