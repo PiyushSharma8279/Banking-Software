@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { useParams, useNavigate  } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import HIMACHAL from "../../Images/himachal.jpg";
 import KARNATAKA from "../../Images/karnataka.jpeg";
 import KASHMIR from "../../Images/kashmir.jpeg";
@@ -15,7 +15,7 @@ function TourPakages() {
 
     const categoryName = category.replace(/-/g, " ").toUpperCase();
 
-    
+
     const images = {
         HIMACHAL,
         KARNATAKA,
@@ -28,7 +28,7 @@ function TourPakages() {
     };
     const bgImage = images[categoryName] || HIMACHAL;
 
-   
+
     const sections = [
         { id: "sec1", label: "04 Nights 05 Days" },
         { id: "sec2", label: "05 Nights 06 Days" },
@@ -36,7 +36,7 @@ function TourPakages() {
         { id: "sec4", label: "07 Nights 08 Days" },
     ];
 
-    
+
     const sectionRefs = useRef({});
     const [activeSection, setActiveSection] = useState(sections[0].id);
 
@@ -75,17 +75,18 @@ function TourPakages() {
 
     return (
         <>
-            
+
             <div
-                className="w-full h-64 md:h-96 bg-cover bg-center flex items-center justify-center"
+                className="relative w-full h-60 md:h-96 bg-cover bg-center flex items-center justify-center"
                 style={{ backgroundImage: `url(${bgImage})` }}
             >
-                <h2 className="text-center text-white font-bold text-2xl md:text-4xl px-4 py-2 rounded-lg bg-black/40">
+                <div className="absolute inset-0 bg-black/40"></div>
+                <h2 className="relative text-center text-white font-bold text-2xl md:text-4xl px-4 py-2 rounded-lg">
                     {categoryName} PACKAGES
                 </h2>
             </div>
 
-            
+
             <div className="p-4 shadow-md m-4 md:m-6">
                 <h2 className="text-xl md:text-2xl font-bold py-2">About {categoryName}</h2>
                 <p className="text-sm md:text-base leading-relaxed">
@@ -96,7 +97,7 @@ function TourPakages() {
             </div>
 
             <div className="flex flex-col md:flex-row mt-10 px-4 md:px-6">
-                
+
                 <aside className="hidden md:block w-1/4 sticky top-24 h-fit bg-white shadow-md rounded-lg p-4">
                     <h2 className="font-bold text-lg mb-3">PACKAGES</h2>
                     <ul className="space-y-2 text-gray-700 font-medium">
@@ -115,8 +116,8 @@ function TourPakages() {
                     </ul>
                 </aside>
 
-                
-                <div className="md:hidden sticky top-16 z-20 bg-white shadow-md overflow-x-auto whitespace-nowrap flex gap-4 px-4 py-2">
+
+                <div className="md:hidden sticky top-24 z-20 bg-white shadow-md overflow-x-auto whitespace-nowrap flex gap-4 px-4 py-2">
                     {sections.map((s) => (
                         <button
                             key={s.id}
@@ -131,7 +132,7 @@ function TourPakages() {
                     ))}
                 </div>
 
-                
+
                 <main className="w-full md:w-3/4 md:ml-6 space-y-12 mt-4 md:mt-0 ">
                     {sections.map((s, i) => (
                         <section
@@ -173,7 +174,7 @@ function TourPakages() {
                                         <p className="text-xs md:text-sm text-gray-500">Per Person</p>
 
                                         <button className="mt-3 md:mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 text-sm md:text-base"
-                                         onClick={() => navigate(`/package/${pkg.code}`)}
+                                            onClick={() => navigate(`/package/${pkg.code}`)}
                                         >
                                             VIEW DETAILS
                                         </button>

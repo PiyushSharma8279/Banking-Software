@@ -10,46 +10,44 @@ import {
 function Footer() {
   return (
     <footer className="bg-[#40858a] text-white ">
-      <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
         
     
         <div>
-          <h3 className="font-bold text-lg mb-4">DOMESTIC FLIGHTS</h3>
-          <ul className="space-y-2 text-sm">
-            <li>Flight from Delhi to Dubai</li>
-            <li>Flight from Delhi to New York</li>
-            <li>Flight from Delhi to London</li>
-            <li>Flight from Delhi to Barcelona</li>
-            <li>Flight from Delhi to Paris</li>
-            <li>Flight from Delhi to Sydney</li>
-          </ul>
+          <h3 className="font-bold text-lg mb-4">Mohali, Chandigarh (Head Office)</h3>
+           <p>
+            Plot No. F-539 Mohali Tower 4th Floor Industrial Area Phase 8B Sas Nagar Mohali 160055 | Telephone No : 0172 - 4104097
+           </p>
         </div>
 
       
         <div>
-          <h3 className="font-bold text-lg mb-4">OTHER DESTINATIONS</h3>
-          <ul className="space-y-2 text-sm">
-            <li>Singapore, Singapore</li>
-            <li>Bangkok, Thailand</li>
-            <li>Hotels in Oslo, Norway</li>
-          </ul>
+          <h3 className="font-bold text-lg mb-4">Mumbai</h3>
+          <p>
+            201 - Harshal Apt. - Virar West - Mumbai - 401303
+          </p>
         </div>
 
         
         <div>
-          <h3 className="font-bold text-lg mb-4">LEGAL</h3>
-          <ul className="space-y-2 text-sm">
-            <li>Terms and Conditions</li>
-            <li>Privacy Policy</li>
-            <li>About Us</li>
-          </ul>
+          <h3 className="font-bold text-lg mb-4">Andaman</h3>
+          <p>
+            Muthumariamman Temple - Near Vitala Public School - Hope Town - Andaman - 744107- Telephone No : 03192-258054 | +91 977 977 5698
+          </p>
+        </div>
+
+         <div>
+          <h3 className="font-bold text-lg mb-4">Srinagar</h3>
+          <p>
+           Arrish Shopping Complex Model Town D, Sopore, Jammu and Kashmir 193201
+          </p>
         </div>
 
      
         <div>
-          <h3 className="font-bold text-lg mb-4">CONTACT</h3>
-          <p className="text-sm mb-2">+91 000 000 0000</p>
-          <div className="flex space-x-4 mt-4">
+          <h3 className="font-bold text-lg mb-4">Leh-Ladakh</h3>
+          <p className="text-sm mb-2">Near Central Institute of Buddhist Studies, Choglamsar Leh – 194 101 | Ladakh (U.T.) | Phone: +91 1982 265 557 |+91 977 977 55 29</p>
+          <div className="flex space-x-4 mt-4 justify-center md:justify-start">
             <a href="#" className="hover:text-gray-300">
               <FaFacebookF />
             </a>
