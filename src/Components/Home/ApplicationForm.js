@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { FaPlane, FaHotel, FaBus, FaUsers, FaExchangeAlt } from "react-icons/fa";
+import { FaPlane, FaHotel, FaBus, FaUsers, FaExchangeAlt, FaCheckCircle, FaTrain, FaShip } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function ApplicationForm() {
+  const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState("flights");
 
   const [from, setFrom] = useState({
@@ -60,7 +62,7 @@ function ApplicationForm() {
                 }`}
             >
               <FaBus className="text-yellow-600" />
-              <h2>Bus</h2>
+              <h2>Cabs</h2>
             </div>
             <div
               onClick={() => setActiveTab("group")}
@@ -68,7 +70,35 @@ function ApplicationForm() {
                 }`}
             >
               <FaUsers className="text-purple-600" />
-              <h2>Group</h2>
+              <h2>TripSafe</h2>
+              
+            </div>
+             <div
+              onClick={() => setActiveTab("group")}
+              className={`flex items-center gap-2 cursor-pointer  ${activeTab === "group" ? "text-purple-600 font-bold" : ""
+                }`}
+            >
+              <FaTrain className="text-blue-600" />
+              <h2>Train</h2>
+              
+            </div>
+              <div
+              onClick={() => navigate('/login')}
+              className={`flex items-center gap-2 cursor-pointer
+                }`}
+            >
+              <FaCheckCircle className="text-pink-600" />
+              <h2>Pakages</h2>
+              
+            </div>
+               <div
+              onClick={() => setActiveTab("group")}
+              className={`flex items-center gap-2 cursor-pointer  ${activeTab === "group" ? "text-purple-600 font-bold" : ""
+                }`}
+            >
+              <FaShip className="text-red-600" />
+              <h2>Cruise</h2>
+              
             </div>
           </div>
         </div>

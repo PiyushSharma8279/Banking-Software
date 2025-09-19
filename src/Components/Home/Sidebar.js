@@ -30,7 +30,7 @@ function Sidebar({ isOpen, setIsOpen }) {
       `}
     >
       
-      <div className="p-5 flex justify-between items-center mt-2 shadow-md sm:flex">
+      <div className="p-4 py-8 flex justify-between items-center mt-4 shadow-md sm:flex">
         <FaBars
           className="cursor-pointer text-2xl"
           onClick={() => setIsOpen(!isOpen)}
