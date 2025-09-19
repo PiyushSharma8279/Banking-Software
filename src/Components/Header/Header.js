@@ -2,9 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../Images/logo.png";
 import {
-  FaHome,
-  FaEnvelope,
-  FaCheckCircle,
+
   FaInfoCircle,
   FaUserCircle,
   FaBars,
@@ -32,11 +30,11 @@ function Header({ isOpen, setIsOpen }) {
         </div>
 
         {/* Right Section - Help, About Us, Manage Account */}
-        <div className="hidden lg:flex items-center gap-10">
+        <div className=" lg:flex items-center gap-10">
 
 
            <div
-            className="flex items-center gap-1 cursor-pointer"
+            className="hidden lg:flex items-center gap-1 cursor-pointer"
             onClick={() => navigate("/about")}
           >
             <FaInfoCircle />{" "}
@@ -44,10 +42,10 @@ function Header({ isOpen, setIsOpen }) {
           </div>
 
           <div
-            className="flex items-center gap-1 cursor-pointer"
+            className="hidden lg:flex items-center gap-1 cursor-pointer"
             onClick={() => navigate("/help")}
           >
-            <FaHireAHelper />{" "}
+            <FaHireAHelper />
             <p className="text-[16px] font-medium text-gray-700">Help</p>
           </div>
 
@@ -56,7 +54,7 @@ function Header({ isOpen, setIsOpen }) {
           <div className="flex items-center gap-2 border border-gray-300 px-2 py-2 rounded-lg cursor-pointer text-[16px] font-medium text-gray-700" 
            onClick={() => navigate("/login")}
           >
-            <FaUserCircle /> <p>Manage Account</p>
+            <FaUserCircle/> <p>Manage Account</p>
           </div>
         </div>
       </div>

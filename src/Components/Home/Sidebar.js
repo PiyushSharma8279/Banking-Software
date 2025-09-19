@@ -16,9 +16,9 @@ function Sidebar({ isOpen, setIsOpen }) {
     { name: "Home", icon: <FaHome />, path: "/" },
     { name: "Pakage", icon: <FaCalendarCheck />, path: "/login" },
     { name: "Tasks", icon: <FaCheckCircle /> },
-    { name: "Messages", icon: <FaEnvelope /> },
+    { name: "Messages", icon: <FaEnvelope />, path: "/help" },
     { name: "About Us", icon: <FaInfoCircle />, path: "/about" },
-    { name: "Profile", icon: <FaUserCircle /> },
+    { name: "Profile", icon: <FaUserCircle />, path: "/login" },
   ];
 
   return (

@@ -42,7 +42,7 @@ function Offers() {
           {offers.map((offer, index) => (
             <div
               key={index}
-              onClick={()=>handleClick()}
+              onClick={()=>handleClick()}   
               className=" h-56 w-full rounded-lg overflow-hidden bg-cover bg-center cursor-pointer"
               style={{
                 backgroundImage:

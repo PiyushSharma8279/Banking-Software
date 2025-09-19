@@ -9,6 +9,7 @@ import TourPakagesContent from "./Pages/TourPakages/TourPakagesContent";
 import ContentHotelsGrid from "./Pages/PakagesCategory/AfterLogin/HotelsDetailsPage/ContentHotelsGrid";
 import PakageDetailsContent from "./Pages/TourPakages/TourPakageDetailspage/PakageDetailsContent";
 import PakageRegisterContent from "./Pages/PakagesCategory/PakageRegister/PakageRegisterContent";
+import HelpContent from "./Pages/Help/HelpContent";
 
 
 
@@ -27,6 +28,7 @@ function App() {
     <Route path="/tour-packages/:category" element={<TourPakagesContent/>}/>
     <Route path="/hotels/:category" element={<ContentHotelsGrid/>}/>
     <Route path="/package/:slug" element={<PakageDetailsContent/>}/>
+    <Route path="/help" element={<HelpContent/>}/>
 
 
 
