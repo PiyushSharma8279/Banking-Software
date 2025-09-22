@@ -15,7 +15,7 @@ function Header({ isOpen, setIsOpen }) {
     <header className="bg-white text-gray-800 p-5 shadow-md fixed top-0 right-0 left-0 z-30">
       <div className="flex justify-between items-center sm:pl-4 md:px-16">
 
-        {/* Left Section - Logo + Mobile Menu */}
+    
         <div className="flex items-center gap-8 md:gap-8">
           <FaBars
             className="text-3xl cursor-pointer block md:hidden mt-3 text-[#40858a]"
@@ -29,7 +29,7 @@ function Header({ isOpen, setIsOpen }) {
           />
         </div>
 
-        {/* Right Section - Help, About Us, Manage Account */}
+        
         <div className=" lg:flex items-center gap-10">
 
 

@@ -3,22 +3,22 @@ import React from "react";
 function Offers() {
   const offers = [
     { title: "Stockholm, Sweden",
-      img : "https://www.adivaha.com/demo/whitelabel12/images/secton03img02.png"
+      img : "https://t3.ftcdn.net/jpg/01/41/11/62/360_F_141116210_SnQQ1bsw4EbOhIXF9wb5tkMeQlN2wUmE.jpg"
      },
     { title: "Copehagen, Denmark" ,
-      img: "https://www.adivaha.com/demo/whitelabel12/images/secton03img01.png"
+      img: "https://www.shutterstock.com/image-photo/copenhagen-iconic-view-famous-old-600nw-1476195866.jpg"
     },
     { title: "Oslo, Norway",
-      img: "https://www.adivaha.com/demo/whitelabel12/images/secton03img03.png"
+      img: "https://media.istockphoto.com/id/1500420309/photo/perfect-reflection-of-the-reine-village-on-the-water-of-the-fjord-in-the-lofoten-islands.jpg?s=612x612&w=0&k=20&c=4FMvHEkG3FH6fpaE355CnUSdXtV4LlqCBF9etWbNR6o="
      },
     { title: "Tokyo, Japan",
-      img : "https://www.adivaha.com/demo/whitelabel12/images/secton03img04.png"
+      img : "https://media.istockphoto.com/id/876560704/photo/fuji-japan-in-spring.jpg?s=612x612&w=0&k=20&c=j1VZlzfNcsjQ4q4yHXJEohSrBZJf6nUhh2_smM4eioQ="
      },
     { title: "Singapore, Singapore",
-      img: "https://www.adivaha.com/demo/whitelabel12/images/secton03img05.png"
+      img: "https://img.freepik.com/free-photo/merlion-statue-cityscape-singapore_335224-666.jpg?semt=ais_incoming&w=740&q=80"
      },
     { title: "Bangkok, Thailand",
-      img: "https://www.adivaha.com/demo/whitelabel12/images/secton03img06.png"
+      img: "https://images.unsplash.com/photo-1528181304800-259b08848526?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGhhaWxhbmR8ZW58MHx8MHx8fDA%3D"
      },
   ];
 

@@ -29,7 +29,7 @@ function Sidebar({ isOpen, setIsOpen }) {
         overflow-hidden
       `}
     >
-      
+
       <div className="p-4 py-8 flex justify-between items-center mt-4 shadow-md sm:flex">
         <FaBars
           className="cursor-pointer text-2xl"
@@ -37,19 +37,18 @@ function Sidebar({ isOpen, setIsOpen }) {
         />
       </div>
 
-    
+
       <div className="flex flex-col mt-4">
         {menus.map((menu, index) => (
           <div
             key={index}
-             onClick={() => navigate(menu.path)} 
+            onClick={() => navigate(menu.path)}
             className="flex items-center gap-2 h-12 px-5 rounded-md cursor-pointer hover:bg-teal-500 transition-colors"
           >
             <span className="text-xl">{menu.icon}</span>
             <span
-              className={`ml-4 text-sm font-medium whitespace-nowrap transition-opacity duration-300 ${
-                isOpen ? "opacity-100" : "opacity-0 sm:opacity-100"
-              }`}
+              className={`ml-4 text-sm font-medium whitespace-nowrap transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 sm:opacity-100"
+                }`}
             >
               {menu.name}
             </span>

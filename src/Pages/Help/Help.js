@@ -5,7 +5,7 @@ function Help() {
     <div className="min-h-screen flex items-center justify-center px-4 py-10 bg-gray-100">
       <div className="w-full max-w-6xl  rounded-2xl p-8 md:p-12">
         
-        {/* Heading */}
+        
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-gray-800">Contact Us</h2>
           <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
@@ -15,10 +15,7 @@ function Help() {
           </p>
         </div>
 
-        {/* Main Content - Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          
-          {/* Left Section - Contact Info */}
           <div className="space-y-6">
             <div>
               <h3 className="font-semibold text-lg text-gray-800">Address</h3>
@@ -38,7 +35,7 @@ function Help() {
             </div>
           </div>
 
-          {/* Right Section - Form */}
+          
           <div>
             <form className="space-y-5">
               <div>
