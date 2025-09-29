@@ -176,6 +176,82 @@ function PackageDetails() {
       </div>
       </div>
 
+      <div className="max-w-6xl mx-auto px-6 py-10">
+      {/* Itinerary Section */}
+      <h2 className="text-2xl font-bold text-center mb-6">
+        FOLLOWING YOUR DAY WISE <span className="text-blue-600">SCHEDULED ITINERARY FOR THIS TOUR</span>
+      </h2>
+
+      <div className="space-y-6 text-gray-700">
+        <div>
+          <h3 className="font-bold text-lg">Day 01 : Arrive at Srinagar Airport. Local Sightseeing of Srinagar.</h3>
+          <p>
+            Meet our representative at Srinagar airport, transfer to hotel / Houseboat. In the evening,
+            shikara ride in world famous dal lake. Overnight stay at Srinagar. Visit Mughal gardens:
+            Cheshma Shahi, Nishat, Shalimar.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-bold text-lg">Day 02 : Srinagar - Full Day Trip to Gulmarg</h3>
+          <p>
+            After breakfast, proceed to Gulmarg and take a ride in the world's highest cable car "Gondola" or
+            enjoy golf in the world’s highest golf course. Overnight stay at Srinagar.
+            <br /> <span className="italic">(Note: Gondola & Pony ride not included. Snow Jeep transfers extra in winters.)</span>
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-bold text-lg">Day 03 : From Srinagar to Pahalgam (3 hrs approx)</h3>
+          <p>
+            After breakfast, check out from Srinagar and drive to Pahalgam via saffron fields, pine forests and Lidder River.
+            Arrive Pahalgam, transfer to hotel. Rest of the day leisure. Overnight at Pahalgam.
+            <br /> <span className="italic">(Note: Horse Riding, Betaab Valley, Aru Valley, etc. cost extra.)</span>
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-bold text-lg">Day 04 : Drive from Pahalgam to Srinagar (Stay in Houseboat)</h3>
+          <p>
+            After breakfast, drive to Srinagar. Local sightseeing including Mughal gardens:
+            Cheshma Shahi, Nishat, Shalimar. Overnight stay at Srinagar in Houseboat.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-bold text-lg">Day 05 : Drop to Srinagar Airport</h3>
+          <p>
+            After breakfast, check out from houseboat and transfer to Srinagar Airport for onward journey. Tour Ends.
+          </p>
+        </div>
+      </div>
+
+      {/* Payment Policy */}
+      <div className="mt-12 bg-gray-100 p-6 rounded-lg shadow">
+        <h3 className="text-xl font-bold mb-4 text-center">BOOKING PAYMENT POLICY</h3>
+        <ul className="list-disc pl-6 space-y-2 text-gray-700">
+          <li>Booking confirmed after 50% advance payment.</li>
+          <li>Vouchers issued with trip details & hotel reservation (may change with prior notice).</li>
+          <li>Hotel confirmation to be reconfirmed by client.</li>
+          <li>100% payment required before travelling.</li>
+          <li>For cash deposit in current account, PAN card required.</li>
+        </ul>
+      </div>
+
+      {/* Cancellation Policy */}
+      <div className="mt-8 bg-gray-100 p-6 rounded-lg shadow">
+        <h3 className="text-xl font-bold mb-4 text-center">BOOKING CANCELLATION POLICY</h3>
+        <ul className="list-disc pl-6 space-y-2 text-gray-700">
+          <li>If cancelled 0–10 days before check-in, 100% booking amount charged.</li>
+          <li>If cancelled 11–20 days before check-in, 70% booking amount charged.</li>
+          <li>If cancelled 21–30 days before check-in, 30% booking amount charged.</li>
+          <li>No refunds for unused nights, early check-outs, or any kind of services.</li>
+          <li>Refunds processed via original payment method (cheque/online transfer).</li>
+          <li>Mid-tour cancellations allowed but non-refundable.</li>
+        </ul>
+      </div>
+    </div>
+
 
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-start md:items-center z-50 overflow-y-auto">
