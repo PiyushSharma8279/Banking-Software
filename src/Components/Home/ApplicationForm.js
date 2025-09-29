@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 function ApplicationForm() {
   const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState("flights");
+  const [isOpen, setIsOpen] = useState(false);
 
   const [from, setFrom] = useState({
     city: "Delhi",
@@ -33,6 +34,12 @@ function ApplicationForm() {
     setFrom(to);
     setTo(from);
   };
+
+  const categories = [
+    { label: "Domestic Packages", path: "/domestic" },
+    { label: "Pan India Packages", path: "/pan-india" },
+    { label: "International Packages", path: "/international" },
+  ];
 
   return (
     <>
@@ -71,43 +78,64 @@ function ApplicationForm() {
             >
               <FaUsers className="text-purple-600" />
               <h2>TripSafe</h2>
-              
+
             </div>
-             <div
+            <div
               onClick={() => setActiveTab("group")}
               className={`flex items-center gap-2 cursor-pointer  ${activeTab === "group" ? "text-purple-600 font-bold" : ""
                 }`}
             >
               <FaTrain className="text-blue-600" />
               <h2>Train</h2>
-              
+
             </div>
-              <div
-              onClick={() => navigate('/login')}
-              className={`flex items-center gap-2 cursor-pointer
-                }`}
+            <div
+              className="relative"
+              onMouseEnter={() => setIsOpen(true)}
+              onMouseLeave={() => setIsOpen(false)}
             >
-              <FaCheckCircle className="text-pink-600" />
-              <h2>Pakages</h2>
+             
+              <div
+                className="flex items-center gap-2 cursor-pointer px-3 py-2 hover:text-pink-600"
+              >
+                <FaCheckCircle className="text-pink-600" />
+                <h2>Pakages</h2>
+              </div>
+
               
+              {isOpen && (
+                <div className="absolute left-0  w-48 bg-white shadow-lg rounded-lg border z-50">
+                  <ul className="flex flex-col">
+                    {categories.map((cat, index) => (
+                      <li
+                        key={index}
+                        onClick={() => navigate(cat.path)}
+                        className="px-4 py-2 hover:bg-pink-100 cursor-pointer text-gray-700"
+                      >
+                        {cat.label}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
-               <div
+            <div
               onClick={() => setActiveTab("group")}
               className={`flex items-center gap-2 cursor-pointer  ${activeTab === "group" ? "text-purple-600 font-bold" : ""
                 }`}
             >
               <FaShip className="text-red-600" />
               <h2>Cruise</h2>
-              
+
             </div>
           </div>
         </div>
 
-        
+
         <div className="flex flex-col gap-4 py-6 md:py-10 bg-white rounded-lg px-4 md:px-10 w-full max-w-5xl relative z-10">
           {activeTab === "flights" && (
             <>
-              
+
               <div className="flex flex-col md:flex-row md:justify-between gap-3">
                 <div className="flex gap-2 text-sm font-medium text-gray-700">
                   <span className="cursor-pointer border border-red-900 py-1 px-2 rounded-full hover:bg-red-800 hover:text-white">
@@ -241,7 +269,7 @@ function ApplicationForm() {
           )}
         </div>
 
-       
+
         <div className="relative z-20 md:-mt-6 -mt-4">
           <div className="flex flex-wrap gap-3 md:gap-5 shadow-lg bg-green-600 text-white px-6 py-3 rounded-xl font-medium cursor-pointer">
             {activeTab === "flights" && "Search Flights"}

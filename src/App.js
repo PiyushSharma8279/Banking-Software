@@ -10,6 +10,7 @@ import ContentHotelsGrid from "./Pages/PakagesCategory/AfterLogin/HotelsDetailsP
 import PakageDetailsContent from "./Pages/TourPakages/TourPakageDetailspage/PakageDetailsContent";
 import PakageRegisterContent from "./Pages/PakagesCategory/PakageRegister/PakageRegisterContent";
 import HelpContent from "./Pages/Help/HelpContent";
+import DomesticPackages from "./Components/Home/Pakages/DomesticPakages";
 
 
 
@@ -29,6 +30,7 @@ function App() {
     <Route path="/hotels/:category" element={<ContentHotelsGrid/>}/>
     <Route path="/package/:slug" element={<PakageDetailsContent/>}/>
     <Route path="/help" element={<HelpContent/>}/>
+    <Route path="/domestic" element={<DomesticPackages/>}/>
 
 
 

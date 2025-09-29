@@ -59,18 +59,18 @@ function TourPakages() {
     }, []);
 
     const packages = [
-        { title: "Basic Packages", code: "T2T05LA01", price: "7,499", img: "https://picsum.photos/400/250?random=1" },
-        { title: "Deluxe Packages", code: "T2T05LA02", price: "8,999", img: "https://picsum.photos/400/250?random=2" },
-        { title: "Deluxe Plus Packages", code: "T2T05LA03", price: "11,999", img: "https://picsum.photos/400/250?random=3" },
-        { title: "Basic Packages", code: "T2T05LA04", price: "8,999", img: "https://picsum.photos/400/250?random=4" },
-        { title: "Deluxe Packages", code: "T2T05LA05", price: "10,499", img: "https://picsum.photos/400/250?random=5" },
-        { title: "Deluxe Plus Packages", code: "T2T05LA06", price: "12,999", img: "https://picsum.photos/400/250?random=6" },
-        { title: "Basic Packages", code: "T2T05LA07", price: "11,499", img: "https://picsum.photos/400/250?random=7" },
-        { title: "Deluxe Packages", code: "T2T05LA08", price: "13,999", img: "https://picsum.photos/400/250?random=8" },
-        { title: "Deluxe Plus Packages", code: "T2T05LA09", price: "15,999", img: "https://picsum.photos/400/250?random=9" },
-        { title: "Basic Packages", code: "T2T05LA10", price: "12,499", img: "https://picsum.photos/400/250?random=10" },
-        { title: "Deluxe Packages", code: "T2T05LA11", price: "14,999", img: "https://picsum.photos/400/250?random=11" },
-        { title: "Deluxe Plus Packages", code: "T2T05LA12", price: "17,999", img: "https://picsum.photos/400/250?random=12" },
+        { title: "Basic Packages", code: "TC05LA01", price: "7,499", img: "https://picsum.photos/400/250?random=1" },
+        { title: "Deluxe Packages", code: "TC05LA02", price: "8,999", img: "https://picsum.photos/400/250?random=2" },
+        { title: "Deluxe Plus Packages", code: "TC05LA03", price: "11,999", img: "https://picsum.photos/400/250?random=3" },
+        { title: "Basic Packages", code: "TC05LA04", price: "8,999", img: "https://picsum.photos/400/250?random=4" },
+        { title: "Deluxe Packages", code: "TC05LA05", price: "10,499", img: "https://picsum.photos/400/250?random=5" },
+        { title: "Deluxe Plus Packages", code: "TC05LA06", price: "12,999", img: "https://picsum.photos/400/250?random=6" },
+        { title: "Basic Packages", code: "TC05LA07", price: "11,499", img: "https://picsum.photos/400/250?random=7" },
+        { title: "Deluxe Packages", code: "TC05LA08", price: "13,999", img: "https://picsum.photos/400/250?random=8" },
+        { title: "Deluxe Plus Packages", code: "TC05LA09", price: "15,999", img: "https://picsum.photos/400/250?random=9" },
+        { title: "Basic Packages", code: "TC05LA10", price: "12,499", img: "https://picsum.photos/400/250?random=10" },
+        { title: "Deluxe Packages", code: "TC05LA11", price: "14,999", img: "https://picsum.photos/400/250?random=11" },
+        { title: "Deluxe Plus Packages", code: "TC05LA12", price: "17,999", img: "https://picsum.photos/400/250?random=12" },
     ];
 
     return (

@@ -3,17 +3,29 @@ import { useState } from "react";
 function ViewMoreInternational() {
   const [showModal, setShowModal] = useState(false);
 
-  const packages = [
-    { title: "DUBAI", img: "https://t2tworld.com/wp-content/uploads/2023/06/1.jpg" },
-    { title: "THAILAND", img: "https://t2tworld.com/wp-content/uploads/2023/06/2.jpg" },
-    { title: "MALDIVES", img: "https://t2tworld.com/wp-content/uploads/2023/06/maldives.jpg" },
-    { title: "INDONESIA", img: "https://t2tworld.com/wp-content/uploads/2023/06/3.jpg" },
+   const packages = [
+    {
+      title: "DUBAI ",
+      img: "https://media.istockphoto.com/id/467829216/photo/dubai-marina.jpg?s=612x612&w=0&k=20&c=5KNh7wGSoP9i-UJzT-LtUfXgLHKKoBlPAK67R0LHRQY=",
+    },
+    {
+      title: "THAILAND ",
+      img: "https://media.istockphoto.com/id/2149112736/photo/wat-arun-temple-at-sunset-bangkok-in-thailand.jpg?s=612x612&w=0&k=20&c=1JqYAueTVDWfnj8iwCRlS_VIp-3YBeDp6Wp-Pq19qVk=",
+    },
+    {
+      title: "MALDIVES ",
+      img: "https://images.pexels.com/photos/1483053/pexels-photo-1483053.jpeg?cs=srgb&dl=pexels-asadphoto-1483053.jpg&fm=jpg",
+    },
+    {
+      title: "INDONESIA",
+      img: "https://www.intrepidtravel.com/adventures/wp-content/uploads/2018/09/2018-06-02_08-04-56-685.jpg",
+    },
   ];
 
   return (
     <div className="p-6 bg-gray-50">
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#246e73] mb-10">
-        International Safarnama Packages
+        International Packages
       </h2>
 
       

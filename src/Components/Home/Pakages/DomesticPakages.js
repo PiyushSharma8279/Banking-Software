@@ -4,46 +4,22 @@ import { useNavigate } from "react-router-dom";
 function DomesticPackages() {
   const navigate = useNavigate()
  
-  const packages = [
-    {
-      title: "LEH-LADAKH",
-      img: "https://t2tworld.com/wp-content/uploads/2023/07/image-6-2-1.png",
-    },
-    {
-      title: "KASHMIR",
-      img: "https://t2tworld.com/wp-content/uploads/2023/07/image-2-2.png",
-    },
-    {
-      title: "KERALA",
-      img: "https://t2tworld.com/wp-content/uploads/2023/07/image-3-2.png",
-    },
-    {
-      title: "ANDAMAN",
-      img: "https://t2tworld.com/wp-content/uploads/2023/07/image-5-2-1.png",
-    },
-    {
-      title: "KARNATAKA",
-      img: "https://t2tworld.com/wp-content/uploads/2023/07/image-24.png",
-    },
-    {
-      title: "SIKKIM",
-      img: "https://t2tworld.com/wp-content/uploads/2023/07/image-1-1.png",
-    },
-    {
-      title: "HIMACHAL",
-      img: "https://t2tworld.com/wp-content/uploads/2023/07/image-2023-07-12T135702.907.png",
-    },
-    {
-      title: "UTTARAKHAND",
-      img: "https://t2tworld.com/wp-content/uploads/2023/07/image-4-2.png",
-    },
+ const packages = [
+    { title: "LADAKH", img: "https://media.istockphoto.com/id/1218830644/photo/beautiful-lake.jpg?s=612x612&w=0&k=20&c=r5or5KmtrZE5P93cDPG2FzxWQxhZA0qeTInoXJ7qXxA=" },
+    { title: "KASHMIR", img: "https://media.istockphoto.com/id/1323846766/photo/a-beautiful-view-of-dal-lake-in-winter-srinagar-kashmir-india.jpg?s=612x612&w=0&k=20&c=Dp3peie2t-jdLEmqe4W-DD09GACu2Cr-JjHHeB6rpBc=" },
+    { title: "KERALA", img: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/a9/f3/43/great-views.jpg?w=900&h=-1&s=1" },
+    { title: "ANDAMAN", img: "https://holidays.tripfactory.com/blogs/wp-content/uploads/sites/6/2024/05/Andaman-Trip.webp" },
+    { title: "KARNATAKA", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2CRQT4Jtq45V2cPN6OK7j4ZBpjkHMeCR60g&s" },
+    { title: "SIKKIM", img: "https://maduratravel.com/wp-content/uploads/2025/06/Gemini_Generated_Image_sllnu9sllnu9slln-636x636.png" },
+    { title: "HIMACHAL", img: "https://static.toiimg.com/thumb/msid-118539018,width-400,resizemode-4/118539018.jpg" },
+    { title: "UTTARAKHAND", img: "https://static.toiimg.com/thumb/msid-118539018,width-400,resizemode-4/118539018.jpg" },
   ];
 
   return (
     <div className="px-4 sm:px-6  py-10 bg-gray-50">
        
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold  text-[#246e73] mb-10">
-        Domestic Safarnama Packages
+        Domestic Packages
       </h2>
 
       

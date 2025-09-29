@@ -1,15 +1,54 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
+// import the same images like in TourPakages
+import HIMACHAL from "../../../Images/himachal.jpg";
+import KARNATAKA from "../../../Images/karnataka.jpeg";
+import KASHMIR from "../../../Images/kashmir.jpeg";
+import KERALA from "../../../Images/kerala.webp";
+import LADAKH from "../../../Images/leh.jpg";
+import SIKKIM from "../../../Images/sikkim.jpeg";
+import UTTARAKHAND from "../../../Images/uttrakhand.jpeg";
+import ANDAMAN from "../../../Images/andman.jpg";
+
 function PackageDetails() {
   const { slug } = useParams();
   const [showModal, setShowModal] = useState(false);
 
+  // 🟢 same mapping for background image
+  const images = {
+    HIMACHAL,
+    KARNATAKA,
+    KASHMIR,
+    KERALA,
+    LADAKH,
+    SIKKIM,
+    UTTARAKHAND,
+    ANDAMAN,
+  };
+
+  // Extract first part of slug (like HIMACHAL from "T2T05LA01" or pass separately in route)
+  const placeName = slug.split("0")[0].toUpperCase(); // quick trick
+  const bgImage = images[placeName] || HIMACHAL;
+
   return (
-    <div className="p-6 md:p-10">
-      <h2 className="text-2xl font-bold text-center mb-6">
-        Package Details: {slug}
-      </h2>
+    <div className="pb-10">
+      {/* 🔥 Hero Background Section */}
+      <div
+        className="relative w-full h-60 md:h-96 bg-cover bg-center flex items-center justify-center"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      >
+        <div className="absolute inset-0 bg-black/40"></div>
+        <h2 className="relative text-center text-white font-bold text-2xl md:text-4xl px-4 py-2 rounded-lg">
+          Package Details – 
+        </h2>
+      </div>
+
+      {/* 🔽 your existing details content */}
+      <div className="p-6 md:p-10">
+        <h2 className="text-2xl font-bold text-center mb-6">
+          Package Details: {slug}
+        </h2>
 
 
       <div className="overflow-x-auto">
@@ -101,9 +140,9 @@ function PackageDetails() {
         <div className="bg-white shadow p-4 rounded transition transform hover:translate-y-2  hover:shadow-lg">
           <h3 className="font-bold mb-2">Packages Inclusion</h3>
           <ul className="list-disc pl-4 space-y-1 text-gray-700">
-            <li>Meet and Greet Service At Airport</li>
-            <li>Accommodation at Hotel</li>
-            <li>Breakfast & Dinner at Hotel</li>
+            <li>04 Nights Accommodation At Hotel</li>
+            <li>Breakfast & Dinner At Hotel</li>
+            <li>Nac Vehicle On Point To Point Basis</li>
             <li>Private Vehicle Transfers</li>
           </ul>
         </div>
@@ -134,6 +173,7 @@ function PackageDetails() {
             <li>Toy Train Ticket ₹1500–2000</li>
           </ul>
         </div>
+      </div>
       </div>
 
 

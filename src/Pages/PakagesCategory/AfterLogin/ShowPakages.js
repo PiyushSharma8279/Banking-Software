@@ -15,7 +15,7 @@ function ShowPakages() {
  
   const slides = [
     {
-      img: "https://5.imimg.com/data5/SELLER/Default/2023/2/SK/LF/XQ/148616/domestic-tour-packages-services.jpg", 
+      img: "https://www.swadestravels.com/assets/img/holidays_packeges/domestic_packeges.jpg", 
       title: "Domestic Packages"
     },
     {
@@ -23,7 +23,7 @@ function ShowPakages() {
       title: "International Packages"
     },
     {
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLpf51AogqSrIuWOe13uA0QYsllP6d_EgFBA&s", 
+      img: "https://www.shutterstock.com/image-photo/tour-packages-concept-collage-travel-260nw-641820484.jpg", 
       title: "Pan India Packages"
     }
   ];
