@@ -72,14 +72,6 @@ function PackageDetails() {
               <td className="border p-2">Breakfast & Dinner</td>
               <td className="border p-2">Royal Orchid | Maple Residency</td>
             </tr>
-            <tr className="hover:bg-gray-100">
-              <td className="border p-2">02 Nights</td>
-              <td className="border p-2">Darjeeling</td>
-              <td className="border p-2">Udaan Dekeling Resort</td>
-              <td className="border p-2">Deluxe Room</td>
-              <td className="border p-2">Breakfast & Dinner</td>
-              <td className="border p-2">Sumi Yashshree Suites | Sumitel Suites</td>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -90,9 +82,9 @@ function PackageDetails() {
           <thead className="bg-gray-200">
             <tr>
               <th className="border p-2">Packages Cost</th>
-              <th className="border p-2">02 Pax</th>
-              <th className="border p-2">04 Pax</th>
-              <th className="border p-2">06 Pax</th>
+              <th className="border p-2">02 Person</th>
+              <th className="border p-2">04 Person</th>
+              <th className="border p-2">06 Person</th>
               <th className="border p-2">Extra Bed</th>
               <th className="border p-2">Child Without Bed</th>
               <th className="border p-2">Booking & Validity</th>
@@ -108,15 +100,7 @@ function PackageDetails() {
               <td className="border p-2">8999/-</td>
               <td className="border p-2">01Apr–31Jul25 | 01Oct–15Nov25</td>
             </tr>
-            <tr className="hover:bg-gray-100">
-              <td className="border p-2">Package Cost PP</td>
-              <td className="border p-2">21999/-</td>
-              <td className="border p-2">14999/-</td>
-              <td className="border p-2">13999/-</td>
-              <td className="border p-2">9999/-</td>
-              <td className="border p-2">6499/-</td>
-              <td className="border p-2">01Feb–31Mar25 | 01Aug–30Sep25</td>
-            </tr>
+
           </tbody>
         </table>
       </div>

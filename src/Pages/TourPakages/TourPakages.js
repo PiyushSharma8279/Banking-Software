@@ -163,7 +163,7 @@ function TourPakages() {
                                         <div className="flex flex-wrap gap-2 md:gap-3 text-gray-600 mt-3 text-[11px] md:text-[12px]">
                                             <span>🍽 Meal</span>
                                             <span>🏨 Hotel</span>
-                                            <span>🚗 Transfer</span>
+                                            <span>🚗 Transport</span>
                                             <span>👓 Sightseeing</span>
                                         </div>
 
