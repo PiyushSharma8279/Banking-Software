@@ -18,7 +18,7 @@ function PackageDetails() {
       try {
         setLoading(true);
         const res = await fetch(
-          `https://demandonsale.com/trav-chap/api/package/${slug}`,
+          `https://api.codetabs.com/v1/proxy?quest=https://demandonsale.com/trav-chap/api/package/${slug}`,
           { signal: controller.signal }
         );
 
