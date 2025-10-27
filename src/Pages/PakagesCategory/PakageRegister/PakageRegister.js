@@ -3,14 +3,16 @@ import { useNavigate } from "react-router-dom";
 
 function PackageRegister() {
   const [formData, setFormData] = useState({
-    fullName: "",
+    full_name: "",
     email: "",
     username: "",
     password: "",
     confirmPassword: "",
     agree: false,
   });
+
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,27 +27,70 @@ function PackageRegister() {
     });
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    if (!formData.fullName || !formData.email || !formData.username || !formData.password) {
+
+    if (
+      !formData.full_name ||
+      !formData.email ||
+      !formData.username ||
+      !formData.password
+    ) {
       setError("⚠️ Please fill all required fields.");
       return;
     }
+
     if (formData.password !== formData.confirmPassword) {
       setError("⚠️ Passwords do not match.");
       return;
     }
+
     if (!formData.agree) {
       setError("⚠️ Please accept terms and conditions.");
       return;
     }
+
     setError("");
-    navigate("/login"); 
+    setLoading(true);
+
+    try {
+      const payload = {
+        full_name: formData.full_name,
+        email: formData.email,
+        username: formData.username,
+        password: formData.password,
+        confirmPassword: formData.confirmPassword,
+      };
+
+   const res = await fetch(
+  "https://api.allorigins.win/raw?url=" +
+    encodeURIComponent("https://demandonsale.com/trav-chap/api/userRegistration"),
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  }
+);
+      const data = await res.json();
+      console.log("✅ Register API Response:", data);
+
+      if (data.status === true) {
+        alert("✅ Registration successful!");
+        navigate("/login");
+      } else {
+        setError(data.message || "❌ Registration failed. Try again.");
+      }
+    } catch (err) {
+      console.error("Register error:", err);
+      setError("⚠️ Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <>
-      
+      {/* Banner */}
       <div
         className="w-full h-64 bg-cover bg-center flex items-center justify-center"
         style={{
@@ -58,7 +103,7 @@ function PackageRegister() {
         </h2>
       </div>
 
-      
+      {/* Form */}
       <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-16">
         <form
           onSubmit={handleRegister}
@@ -68,87 +113,55 @@ function PackageRegister() {
             Create Your Account
           </h3>
 
-          
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm mb-2">
-              Full Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              placeholder="Enter your full name"
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+          <input
+            type="text"
+            name="full_name"
+            value={formData.full_name}
+            onChange={handleChange}
+            placeholder="Full Name"
+            className="w-full mb-4 px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+          />
 
-          {/* Email */}
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm mb-2">
-              Email <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email"
+            className="w-full mb-4 px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+          />
 
-          {/* Username */}
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm mb-2">
-              Username <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              placeholder="Choose a username"
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            placeholder="Username"
+            className="w-full mb-4 px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+          />
 
-          {/* Password */}
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm mb-2">
-              Password <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Enter your password"
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Password"
+            className="w-full mb-4 px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+          />
 
-          {/* Confirm Password */}
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm mb-2">
-              Confirm Password <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="password"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              placeholder="Re-enter your password"
-              className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+          <input
+            type="password"
+            name="confirmPassword"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            placeholder="Confirm Password"
+            className="w-full mb-4 px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+          />
 
-          {/* Error Message */}
           {error && (
             <p className="text-red-500 text-sm mb-4 text-center">{error}</p>
           )}
 
-          {/* Terms */}
           <div className="flex items-center mb-6">
             <input
               type="checkbox"
@@ -165,18 +178,23 @@ function PackageRegister() {
             </label>
           </div>
 
-          {/* Submit */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition transform hover:scale-[1.02] shadow-md"
+            disabled={loading}
+            className={`w-full py-3 rounded-lg font-medium text-white transition transform hover:scale-[1.02] shadow-md ${loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700"
+              }`}
           >
-            Register
+            {loading ? "Registering..." : "Register"}
           </button>
 
-          {/* Link */}
           <p className="mt-6 text-center text-sm text-gray-600">
             Already have an account?{" "}
-            <a onClick={()=> navigate('/login')} className="text-blue-600 hover:underline">
+            <a
+              onClick={() => navigate("/login")}
+              className="text-blue-600 hover:underline cursor-pointer"
+            >
               Login here
             </a>
           </p>

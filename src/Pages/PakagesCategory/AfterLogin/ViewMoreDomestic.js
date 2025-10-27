@@ -14,7 +14,6 @@ function ViewMoreDomestic() {
     { title: "UTTARAKHAND", img: "https://static.toiimg.com/thumb/msid-118539018,width-400,resizemode-4/118539018.jpg" },
   ];
 
-
   const createSlug = (title) => title.toLowerCase().replace(/\s+/g, "-");
 
   return (

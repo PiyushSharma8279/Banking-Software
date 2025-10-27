@@ -12,9 +12,6 @@ import PakageRegisterContent from "./Pages/PakagesCategory/PakageRegister/Pakage
 import HelpContent from "./Pages/Help/HelpContent";
 import DomesticPackages from "./Components/Home/Pakages/DomesticPakages";
 
-
-
-
 function App() {
   return (
    <>
@@ -26,16 +23,11 @@ function App() {
     <Route path="/register" element={<PakageRegisterContent/>}/>
     <Route path="/about" element={<ContentAbout/>}/>
     <Route path="/pakages" element={<ShowPakages/>}/>
-    <Route path="/tour-packages/:category" element={<TourPakagesContent/>}/>
+    <Route path="/tour-pakages/:category" element={<TourPakagesContent/>}/>
     <Route path="/hotels/:category" element={<ContentHotelsGrid/>}/>
     <Route path="/package/:slug" element={<PakageDetailsContent/>}/>
     <Route path="/help" element={<HelpContent/>}/>
     <Route path="/domestic" element={<DomesticPackages/>}/>
-
-
-
-
-
   </Routes>
   
   </BrowserRouter>
