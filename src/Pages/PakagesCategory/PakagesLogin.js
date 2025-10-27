@@ -56,7 +56,6 @@ function PakagesLogin() {
       setLoading(false);
     }
   };
-
   return (
     <>
       {/* Banner */}
@@ -83,7 +82,7 @@ function PakagesLogin() {
             </p>
           </div>
 
-          {/* Username */}
+         
           <div className="mb-6">
             <label className="block text-white text-sm font-medium mb-2">
               Username<span className="text-red-500">*</span>
@@ -97,7 +96,7 @@ function PakagesLogin() {
             />
           </div>
 
-          {/* Password */}
+          
           <div className="mb-6">
             <label className="block text-white text-sm font-medium mb-2">
               Password<span className="text-red-500">*</span>
@@ -111,7 +110,7 @@ function PakagesLogin() {
             />
           </div>
 
-          {/* Error message */}
+          
           {error && (
             <p className="text-red-400 text-sm mb-4 text-center">{error}</p>
           )}
