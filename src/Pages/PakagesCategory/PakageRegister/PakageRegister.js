@@ -54,22 +54,20 @@ function PackageRegister() {
     setLoading(true);
 
     try {
-      const payload = {
-        full_name: formData.full_name,
-        email: formData.email,
-        username: formData.username,
-        password: formData.password,
-        confirmPassword: formData.confirmPassword,
-      };
+      // ✅ Use FormData because backend expects form-data, not JSON
+      const formDataToSend = new FormData();
+      formDataToSend.append("full_name", formData.full_name);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("username", formData.username);
+      formDataToSend.append("password", formData.password);
+      formDataToSend.append("confirmPassword", formData.confirmPassword);
 
-  const res = await fetch(
-  `https://api.allorigins.win/raw?url=${encodeURIComponent("https://demandonsale.com/trav-chap/api/userRegistration")}`,
-  {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  }
-);
+      // ✅ Direct API call (no need for allorigins proxy if CORS is fixed)
+      const res = await fetch("https://demandonsale.com/trav-chap/api/userRegistration", {
+        method: "POST",
+        body: formDataToSend, // automatically sets multipart/form-data headers
+      });
+
       const data = await res.json();
       console.log("✅ Register API Response:", data);
 
@@ -180,10 +178,11 @@ function PackageRegister() {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-3 rounded-lg font-medium text-white transition transform hover:scale-[1.02] shadow-md ${loading
+            className={`w-full py-3 rounded-lg font-medium text-white transition transform hover:scale-[1.02] shadow-md ${
+              loading
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-blue-600 hover:bg-blue-700"
-              }`}
+            }`}
           >
             {loading ? "Registering..." : "Register"}
           </button>
