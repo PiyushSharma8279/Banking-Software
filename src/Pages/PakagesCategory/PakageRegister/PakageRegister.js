@@ -62,8 +62,8 @@ function PackageRegister() {
         confirmPassword: formData.confirmPassword,
       };
 
-   const res = await fetch(
-  "https://api.codetabs.com/v1/proxy?quest=https://demandonsale.com/trav-chap/api/userRegistration",
+  const res = await fetch(
+  `https://api.allorigins.win/raw?url=${encodeURIComponent("https://demandonsale.com/trav-chap/api/userRegistration")}`,
   {
     method: "POST",
     headers: { "Content-Type": "application/json" },
