@@ -6,11 +6,20 @@ function DomesticPackages() {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const IMAGE_BASE_URL = "https://demandonsale.com/trav-chap/uploads/location/";
-  const API_URL =
-    "https://api.codetabs.com/v1/proxy?quest=https://demandonsale.com/trav-chap/api/locations/list";
+  const API_URL = `https://api.allorigins.win/raw?url=${encodeURIComponent(
+    "https://demandonsale.com/trav-chap/api/locations/list"
+  )}`;
 
+  // ✅ Check login status on component mount
+  useEffect(() => {
+    const user = localStorage.getItem("travchap_user");
+    setIsLoggedIn(!!user); // true if user data exists
+  }, []);
+
+  // ✅ Fetch packages
   useEffect(() => {
     const fetchPackages = async () => {
       try {
@@ -41,6 +50,7 @@ function DomesticPackages() {
         Domestic Packages
       </h2>
 
+      {/* Loading Skeleton */}
       {loading && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {[...Array(8)].map((_, i) => (
@@ -49,12 +59,14 @@ function DomesticPackages() {
         </div>
       )}
 
+      {/* Error Message */}
       {error && (
         <p className="text-center text-red-500 mt-4">
           Error loading packages: {error}
         </p>
       )}
 
+      {/* Packages List */}
       {!loading && !error && packages.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {packages.map((pkg) => (
@@ -76,12 +88,17 @@ function DomesticPackages() {
               <h3 className="text-center text-lg font-semibold text-gray-800 py-3 border-t px-2 truncate">
                 {pkg.name || "Unknown Destination"}
               </h3>
+
               <div className="p-4 flex flex-col justify-between">
                 <button
                   className="mt-4 w-full border border-[#246e73] text-[#246e73] px-4 py-2 rounded-lg font-medium hover:bg-[#246e73] hover:text-white transition"
-                  onClick={() => navigate(`/tour-pakages/${pkg.slug}`)}
+                  onClick={() =>
+                    isLoggedIn
+                      ? navigate(`/tour-pakages/${pkg.slug}`)
+                      : navigate("/login")
+                  }
                 >
-                  LOGIN TO CHECK
+                  {isLoggedIn ? "View More" : "Login to Check"}
                 </button>
               </div>
             </div>
@@ -89,6 +106,7 @@ function DomesticPackages() {
         </div>
       )}
 
+      {/* Empty State */}
       {!loading && !error && packages.length === 0 && (
         <p className="text-center text-gray-500">No packages found.</p>
       )}

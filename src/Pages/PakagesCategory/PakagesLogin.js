@@ -6,10 +6,17 @@ function PakagesLogin() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // ✅ Check if user is already logged in
+    const savedUser = localStorage.getItem("travchap_user");
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
   }, []);
 
   const handleLogin = async (e) => {
@@ -24,7 +31,6 @@ function PakagesLogin() {
     setLoading(true);
 
     try {
-      // ✅ Direct API endpoint (use after enabling CORS on backend)
       const API_URL = "https://demandonsale.com/trav-chap/api/user/login";
 
       const formData = new FormData();
@@ -42,7 +48,7 @@ function PakagesLogin() {
       if (data.status === true || data.status === "success") {
         alert("✅ Login successful!");
         localStorage.setItem("travchap_user", JSON.stringify(data.data));
-        navigate("/pakages");
+        setUser(data.data);
       } else {
         setError(data.message || "❌ Invalid username or password.");
       }
@@ -54,9 +60,45 @@ function PakagesLogin() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("travchap_user");
+    setUser(null);
+  };
+
+  // ✅ If logged in — show account details
+  if (user) {
+    return (
+      <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-6">
+        <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
+          <h2 className="text-2xl font-bold text-[#0a2c53] mb-6 text-center">
+            Your Account
+          </h2>
+          <div className="space-y-4 text-gray-700">
+    
+          </div>
+
+          <div className="mt-8 flex flex-col gap-4">
+            <button
+              onClick={() => navigate("/pakages")}
+              className="w-full bg-[#0a2c53] text-white py-2 rounded-lg hover:bg-[#103b73] transition"
+            >
+              Go to Packages
+            </button>
+            <button
+              onClick={handleLogout}
+              className="w-full border border-[#0a2c53] text-[#0a2c53] py-2 rounded-lg hover:bg-[#0a2c53] hover:text-white transition"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ✅ Otherwise — show login form
   return (
     <>
-      {/* Banner Section */}
       <div
         className="w-full h-80 bg-cover bg-center flex items-center justify-center"
         style={{
@@ -68,7 +110,6 @@ function PakagesLogin() {
         </h2>
       </div>
 
-      {/* Form Section */}
       <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12">
         <form
           onSubmit={handleLogin}
@@ -80,7 +121,6 @@ function PakagesLogin() {
             </p>
           </div>
 
-          {/* Username Field */}
           <div className="mb-6">
             <label className="block text-white text-sm font-medium mb-2">
               Username<span className="text-red-500">*</span>
@@ -94,7 +134,6 @@ function PakagesLogin() {
             />
           </div>
 
-          {/* Password Field */}
           <div className="mb-6">
             <label className="block text-white text-sm font-medium mb-2">
               Password<span className="text-red-500">*</span>
@@ -108,32 +147,22 @@ function PakagesLogin() {
             />
           </div>
 
-          {/* Error Message */}
           {error && (
             <p className="text-red-400 text-sm mb-4 text-center">{error}</p>
           )}
 
-          {/* Remember Me */}
-          <div className="flex items-center mb-6">
-            <input type="checkbox" id="remember" className="mr-2" />
-            <label htmlFor="remember" className="text-white text-sm">
-              Remember Me
-            </label>
-          </div>
-
-          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-2 rounded-md text-white font-medium transition ${loading
+            className={`w-full py-2 rounded-md text-white font-medium transition ${
+              loading
                 ? "bg-gray-500 cursor-not-allowed"
                 : "bg-blue-600 hover:bg-blue-700"
-              }`}
+            }`}
           >
             {loading ? "Logging in..." : "Login"}
           </button>
 
-          {/* Links */}
           <div className="mt-6 text-center">
             <a
               onClick={() => navigate("/register")}
