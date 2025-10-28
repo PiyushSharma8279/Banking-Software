@@ -24,14 +24,9 @@ function PakagesLogin() {
     setLoading(true);
 
     try {
-      // 🟢 Once backend CORS is fixed, use this directly:
-      // const API_URL = "https://demandonsale.com/trav-chap/api/user/login";
+      // ✅ Direct API endpoint (use after enabling CORS on backend)
+      const API_URL = "https://demandonsale.com/trav-chap/api/user/login";
 
-      // 🟡 Temporary (CORS-safe via proxy):
-      const API_URL =
-        "https://api.allorigins.win/raw?url=https://demandonsale.com/trav-chap/api/user/login";
-
-      // ✅ Use FormData to match backend format
       const formData = new FormData();
       formData.append("username", username);
       formData.append("password", password);
@@ -47,7 +42,7 @@ function PakagesLogin() {
       if (data.status === true || data.status === "success") {
         alert("✅ Login successful!");
         localStorage.setItem("travchap_user", JSON.stringify(data.data));
-        navigate("/pakages"); // redirect after success
+        navigate("/pakages");
       } else {
         setError(data.message || "❌ Invalid username or password.");
       }
@@ -130,11 +125,10 @@ function PakagesLogin() {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-2 rounded-md text-white font-medium transition ${
-              loading
+            className={`w-full py-2 rounded-md text-white font-medium transition ${loading
                 ? "bg-gray-500 cursor-not-allowed"
                 : "bg-blue-600 hover:bg-blue-700"
-            }`}
+              }`}
           >
             {loading ? "Logging in..." : "Login"}
           </button>
