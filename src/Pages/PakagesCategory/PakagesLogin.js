@@ -24,41 +24,44 @@ function PakagesLogin() {
     setLoading(true);
 
     try {
-      // Using allorigins to bypass CORS
-      const res = await fetch(
-        "https://api.allorigins.win/raw?url=https://demandonsale.com/trav-chap/api/user/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username,
-            password,
-          }),
-        }
-      );
+      // 🟢 Once backend CORS is fixed, use this directly:
+      // const API_URL = "https://demandonsale.com/trav-chap/api/user/login";
+
+      // 🟡 Temporary (CORS-safe via proxy):
+      const API_URL =
+        "https://api.allorigins.win/raw?url=https://demandonsale.com/trav-chap/api/user/login";
+
+      // ✅ Use FormData to match backend format
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("password", password);
+
+      const res = await fetch(API_URL, {
+        method: "POST",
+        body: formData,
+      });
 
       const data = await res.json();
-      console.log("Login API Response:", data);
+      console.log("✅ Login API Response:", data);
 
-      if (data.status === "success" || data.status === true) {
+      if (data.status === true || data.status === "success") {
         alert("✅ Login successful!");
-        localStorage.setItem("travchap_user", JSON.stringify(data.data)); // store user info
+        localStorage.setItem("travchap_user", JSON.stringify(data.data));
         navigate("/pakages"); // redirect after success
       } else {
         setError(data.message || "❌ Invalid username or password.");
       }
     } catch (err) {
-      console.error("Login error:", err);
+      console.error("❌ Login error:", err);
       setError("⚠️ Something went wrong. Please try again later.");
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <>
-      {/* Banner */}
+      {/* Banner Section */}
       <div
         className="w-full h-80 bg-cover bg-center flex items-center justify-center"
         style={{
@@ -70,7 +73,7 @@ function PakagesLogin() {
         </h2>
       </div>
 
-      {/* Form */}
+      {/* Form Section */}
       <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12">
         <form
           onSubmit={handleLogin}
@@ -82,7 +85,7 @@ function PakagesLogin() {
             </p>
           </div>
 
-         
+          {/* Username Field */}
           <div className="mb-6">
             <label className="block text-white text-sm font-medium mb-2">
               Username<span className="text-red-500">*</span>
@@ -96,7 +99,7 @@ function PakagesLogin() {
             />
           </div>
 
-          
+          {/* Password Field */}
           <div className="mb-6">
             <label className="block text-white text-sm font-medium mb-2">
               Password<span className="text-red-500">*</span>
@@ -110,12 +113,12 @@ function PakagesLogin() {
             />
           </div>
 
-          
+          {/* Error Message */}
           {error && (
             <p className="text-red-400 text-sm mb-4 text-center">{error}</p>
           )}
 
-          {/* Remember me */}
+          {/* Remember Me */}
           <div className="flex items-center mb-6">
             <input type="checkbox" id="remember" className="mr-2" />
             <label htmlFor="remember" className="text-white text-sm">
@@ -123,7 +126,7 @@ function PakagesLogin() {
             </label>
           </div>
 
-          {/* Submit */}
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}
