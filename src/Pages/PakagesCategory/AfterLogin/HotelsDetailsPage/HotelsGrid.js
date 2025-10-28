@@ -148,15 +148,7 @@ function HotelCard({ name, address, img, rating }) {
                             </div>
 
                            
-                            <div className="flex flex-col gap-1">
-                                <label>Room Type *</label>
-                                <select className="p-2 rounded text-black">
-                                     <option>Select Room Type</option>
-                                    <option>Base</option>
-                                    <option>Second</option>
-                                    <option>Third</option>
-                                </select>
-                            </div>
+                           
 
                             
                             <div className="flex flex-col gap-1">
@@ -178,7 +170,18 @@ function HotelCard({ name, address, img, rating }) {
 
                             
                             <div className="flex flex-col gap-1">
-                                <label>Extra Bed / Child with Bed *</label>
+                                <label>Extra Bed</label>
+                                <select className="p-2 rounded text-black">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                </select>
+                            </div>
+                             <div className="flex flex-col gap-1">
+                                <label>Child without Bed</label>
                                 <select className="p-2 rounded text-black">
                                     <option>1</option>
                                     <option>2</option>

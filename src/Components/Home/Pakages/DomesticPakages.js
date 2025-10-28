@@ -13,13 +13,13 @@ function DomesticPackages() {
     "https://demandonsale.com/trav-chap/api/locations/list"
   )}`;
 
-  // ✅ Check login status on component mount
+ 
   useEffect(() => {
     const user = localStorage.getItem("travchap_user");
     setIsLoggedIn(!!user); // true if user data exists
   }, []);
 
-  // ✅ Fetch packages
+  
   useEffect(() => {
     const fetchPackages = async () => {
       try {
@@ -59,14 +59,14 @@ function DomesticPackages() {
         </div>
       )}
 
-      {/* Error Message */}
+      
       {error && (
         <p className="text-center text-red-500 mt-4">
           Error loading packages: {error}
         </p>
       )}
 
-      {/* Packages List */}
+    
       {!loading && !error && packages.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {packages.map((pkg) => (
@@ -106,7 +106,7 @@ function DomesticPackages() {
         </div>
       )}
 
-      {/* Empty State */}
+      
       {!loading && !error && packages.length === 0 && (
         <p className="text-center text-gray-500">No packages found.</p>
       )}
