@@ -124,7 +124,7 @@ function HotelCard({ name, address, img, rating }) {
                         <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             
                             <div className="flex flex-col gap-1">
-                                <label>Hotel Place *</label>
+                                <label>Booking code*</label>
                                 <input type="text" className="p-2 rounded text-black" />
                             </div>
 
@@ -136,12 +136,14 @@ function HotelCard({ name, address, img, rating }) {
 
                            
                             <div className="flex flex-col gap-1">
-                                <label>Hotel Category *</label>
+                                <label>Total No. of Person *</label>
                                 <select className="p-2 rounded text-black">
-                                    <option>Select Hotel Category</option>
-                                    <option>3 Star</option>
-                                    <option>4 Star</option>
-                                    <option>5 Star</option>
+                                    <option>Select</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
                                 </select>
                             </div>
 
@@ -154,12 +156,6 @@ function HotelCard({ name, address, img, rating }) {
                                     <option>Second</option>
                                     <option>Third</option>
                                 </select>
-                            </div>
-
-                            
-                            <div className="flex flex-col gap-1">
-                                <label>No of Nights *</label>
-                                <input type="number" className="p-2 rounded text-black" />
                             </div>
 
                             
