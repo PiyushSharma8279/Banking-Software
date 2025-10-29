@@ -74,6 +74,7 @@ function PackageDetails() {
     try {
       const res = await fetch("https://demandonsale.com/trav-chap/api/booking", {
     method: "POST",
+    mode: "cors",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(bookingData),
   });
