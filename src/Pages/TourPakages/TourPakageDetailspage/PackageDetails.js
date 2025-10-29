@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 function PackageDetails() {
-  const { slug } = useParams(); 
+  const { slug } = useParams();
   const [packageData, setPackageData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,12 +10,11 @@ function PackageDetails() {
 
   // Booking form state
   const [bookingData, setBookingData] = useState({
-    booking_code: "",
-    guest_name: "",
-    total_person: "",
-    rooms: "",
-    check_in: "",
-    check_out: "",
+    package_code: "",
+    first_guest_name: "",
+    total_persons: "",
+    check_in_date: "",
+    check_out_date: "",
     extra_bed: "",
     child_without_bed: "",
     meal_plan: "",
@@ -59,38 +58,39 @@ function PackageDetails() {
     return () => controller.abort();
   }, [slug]);
 
-  // 🟢 Handle input changes in booking form
+  // 🟢 Handle input changes
   const handleBookingChange = (e) => {
     const { name, value } = e.target;
     setBookingData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // 🟢 Submit booking form
+  // 🟢 Submit form using FormData
   const handleBookingSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     setResponseMsg("");
 
     try {
+      const formData = new FormData();
+      Object.entries(bookingData).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+
       const res = await fetch("https://demandonsale.com/trav-chap/api/booking", {
-    method: "POST",
-    mode: "cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(bookingData),
-  });
+        method: "POST",
+        body: formData, // no headers! Browser sets multipart boundary automatically
+      });
 
       const result = await res.json();
 
       if (res.ok) {
         setResponseMsg("✅ Booking submitted successfully!");
-        // Clear form
         setBookingData({
-          booking_code: "",
-          guest_name: "",
-          total_person: "",
-          rooms: "",
-          check_in: "",
-          check_out: "",
+          package_code: "",
+          first_guest_name: "",
+          total_persons: "",
+          check_in_date: "",
+          check_out_date: "",
           extra_bed: "",
           child_without_bed: "",
           meal_plan: "",
@@ -266,7 +266,7 @@ function PackageDetails() {
         </div>
       </div>
 
-      {/* 🟢 Booking Modal */}
+      {/* Booking Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-start md:items-center z-50 overflow-y-auto">
           <div className="bg-[#083d56] text-white p-6 rounded-lg w-[95%] md:w-[90%] max-w-4xl relative mt-6 md:mt-20 overflow-y-auto max-h-[90vh]">
@@ -286,12 +286,11 @@ function PackageDetails() {
               className="grid grid-cols-1 md:grid-cols-2 gap-4"
             >
               {[
-                { label: "Booking code*", name: "booking_code", type: "text" },
-                { label: "First Guest Name *", name: "guest_name", type: "text" },
-                { label: "No of Rooms *", name: "rooms", type: "number" },
-                { label: "Check In Date *", name: "check_in", type: "date" },
-                { label: "Check Out Date *", name: "check_out", type: "date" },
-                { label: "Mobile No *", name: "mobile_no", type: "text" },
+                { label: "Booking code*", name: "package_code", type: "text" },
+                { label: "First Guest Name *", name: "first_guest_name", type: "text" },
+                { label: "Check In Date *", name: "check_in_date", type: "date" },
+                { label: "Check Out Date *", name: "check_out_date", type: "date" },
+                { label: "Mobile No *", name: "mobile_no", type: "number" },
               ].map((input) => (
                 <div key={input.name} className="flex flex-col gap-1">
                   <label>{input.label}</label>
@@ -309,7 +308,7 @@ function PackageDetails() {
               <div className="flex flex-col gap-1">
                 <label>Total No. of Person *</label>
                 <select
-                  name="total_person"
+                  name="total_persons"
                   value={bookingData.total_person}
                   onChange={handleBookingChange}
                   className="p-2 rounded text-black"
