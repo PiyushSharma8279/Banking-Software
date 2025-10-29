@@ -72,7 +72,7 @@ function PackageDetails() {
     setResponseMsg("");
 
     try {
-      const res = await fetch("https://demandonsale.com/trav-chap/api/booking", {
+      const res = await fetch("https://api.codetabs.com/v1/proxy?quest=https://demandonsale.com/trav-chap/api/booking", {
     method: "POST",
     mode: "cors",
     headers: { "Content-Type": "application/json" },
