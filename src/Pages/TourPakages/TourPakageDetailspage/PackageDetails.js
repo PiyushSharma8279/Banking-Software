@@ -1,16 +1,34 @@
-
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 function PackageDetails() {
-  const { slug } = useParams(); // slug = package_code
+  const { slug } = useParams(); 
   const [packageData, setPackageData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
+  // Booking form state
+  const [bookingData, setBookingData] = useState({
+    booking_code: "",
+    guest_name: "",
+    total_person: "",
+    rooms: "",
+    check_in: "",
+    check_out: "",
+    extra_bed: "",
+    child_without_bed: "",
+    meal_plan: "",
+    mobile_no: "",
+    additional_info: "",
+  });
+
+  const [submitting, setSubmitting] = useState(false);
+  const [responseMsg, setResponseMsg] = useState("");
+
   const IMAGE_BASE_URL = "https://demandonsale.com/trav-chap/";
 
+  // 🟢 Fetch package details
   useEffect(() => {
     const controller = new AbortController();
 
@@ -40,6 +58,57 @@ function PackageDetails() {
     fetchPackage();
     return () => controller.abort();
   }, [slug]);
+
+  // 🟢 Handle input changes in booking form
+  const handleBookingChange = (e) => {
+    const { name, value } = e.target;
+    setBookingData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // 🟢 Submit booking form
+  const handleBookingSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setResponseMsg("");
+
+    try {
+      const res = await fetch(
+        "https://api.codetabs.com/v1/proxy?quest=https://demandonsale.com/trav-chap/api/booking",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(bookingData),
+        }
+      );
+
+      const result = await res.json();
+
+      if (res.ok) {
+        setResponseMsg("✅ Booking submitted successfully!");
+        // Clear form
+        setBookingData({
+          booking_code: "",
+          guest_name: "",
+          total_person: "",
+          rooms: "",
+          check_in: "",
+          check_out: "",
+          extra_bed: "",
+          child_without_bed: "",
+          meal_plan: "",
+          mobile_no: "",
+          additional_info: "",
+        });
+      } else {
+        setResponseMsg(result.message || "❌ Booking failed. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setResponseMsg("⚠️ Something went wrong. Please try again later.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   if (loading)
     return <p className="text-center mt-10 text-gray-600 font-medium">Loading...</p>;
@@ -71,12 +140,10 @@ function PackageDetails() {
 
   return (
     <div className="pb-10">
-      {/* Hero Background Section */}
+      {/* Hero Section */}
       <div
         className="relative w-full h-60 md:h-96 bg-cover bg-center flex items-center justify-center"
-        style={{
-          backgroundImage: `url(${IMAGE_BASE_URL}${image})`,
-        }}
+        style={{ backgroundImage: `url(${IMAGE_BASE_URL}${image})` }}
       >
         <div className="absolute inset-0 bg-black/40"></div>
         <h2 className="relative text-center text-white font-bold text-2xl md:text-4xl px-4 py-2 rounded-lg">
@@ -87,7 +154,7 @@ function PackageDetails() {
       <div className="p-6 md:p-10">
         <h2 className="text-2xl font-bold text-center mb-6">Package Details: {slug}</h2>
 
-        {/* Package Info Table */}
+        {/* Info Table */}
         <div className="overflow-x-auto">
           <table className="w-full border-collapse border border-gray-300 text-sm md:text-base">
             <thead className="bg-blue-900 text-white">
@@ -157,23 +224,20 @@ function PackageDetails() {
           </button>
         </div>
 
-        {/* Inclusion / Exclusion / Notes */}
+        {/* Inclusion / Exclusion */}
         <div className="grid md:grid-cols-4 gap-6 mt-10 text-sm">
           <div className="bg-white shadow p-4 rounded">
             <h3 className="font-bold mb-2">Package Inclusion</h3>
             <div dangerouslySetInnerHTML={{ __html: inclusion }} />
           </div>
-
           <div className="bg-white shadow p-4 rounded">
             <h3 className="font-bold mb-2">Package Exclusion</h3>
             <div dangerouslySetInnerHTML={{ __html: exclusion }} />
           </div>
-
           <div className="bg-white shadow p-4 rounded">
             <h3 className="font-bold mb-2">Note</h3>
             <div dangerouslySetInnerHTML={{ __html: note }} />
           </div>
-
           <div className="bg-white shadow p-4 rounded">
             <h3 className="font-bold mb-2">Additional Charges</h3>
             <div dangerouslySetInnerHTML={{ __html: addtional_charge }} />
@@ -181,7 +245,7 @@ function PackageDetails() {
         </div>
       </div>
 
-      {/* Day Wise Itinerary */}
+      {/* Day Wise */}
       <div className="max-w-6xl mx-auto px-6 py-10">
         <h2 className="text-2xl font-bold text-center mb-6">
           DAY-WISE <span className="text-blue-600">ITINERARY</span>
@@ -192,150 +256,146 @@ function PackageDetails() {
         />
       </div>
 
-      {/* Payment & Cancellation Policies */}
+      {/* Payment Policy */}
       <div className="max-w-6xl mx-auto px-6 space-y-8">
         <div className="bg-gray-100 p-6 rounded-lg shadow">
-          <h3 className="text-xl font-bold mb-4 text-center">
-            BOOKING PAYMENT POLICY
-          </h3>
+          <h3 className="text-xl font-bold mb-4 text-center">BOOKING PAYMENT POLICY</h3>
           <div dangerouslySetInnerHTML={{ __html: booking_payment_policy }} />
         </div>
-
         <div className="bg-gray-100 p-6 rounded-lg shadow">
-          <h3 className="text-xl font-bold mb-4 text-center">
-            BOOKING CANCELLATION POLICY
-          </h3>
+          <h3 className="text-xl font-bold mb-4 text-center">BOOKING CANCELLATION POLICY</h3>
           <div dangerouslySetInnerHTML={{ __html: booking_cancellation_policy }} />
         </div>
       </div>
 
-      {/* Modal (same as before) */}
+      {/* 🟢 Booking Modal */}
       {showModal && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-start md:items-center z-50 overflow-y-auto">
-                    
-                    <div className="bg-[#083d56] text-white p-6 rounded-lg w-[95%] md:w-[90%] max-w-4xl relative mt-6 md:mt-20 overflow-y-auto max-h-[90vh]">
-                        
-                        <button
-                            className="absolute top-2 right-2 text-white text-xl font-bold"
-                            onClick={() => setShowModal(false)}
-                        >
-                            ✖
-                        </button>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-start md:items-center z-50 overflow-y-auto">
+          <div className="bg-[#083d56] text-white p-6 rounded-lg w-[95%] md:w-[90%] max-w-4xl relative mt-6 md:mt-20 overflow-y-auto max-h-[90vh]">
+            <button
+              className="absolute top-2 right-2 text-white text-xl font-bold"
+              onClick={() => setShowModal(false)}
+            >
+              ✖
+            </button>
 
-                        <h2 className="text-center text-lg md:text-2xl font-bold mb-6">
-                            Booking Now
-                        </h2>
+            <h2 className="text-center text-lg md:text-2xl font-bold mb-6">
+              Booking Now
+            </h2>
 
-                        
-                        <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            
-                            <div className="flex flex-col gap-1">
-                                <label>Hotel Place *</label>
-                                <input type="text" className="p-2 rounded text-black" />
-                            </div>
-
-                            
-                            <div className="flex flex-col gap-1">
-                                <label>First Guest Name *</label>
-                                <input type="text" className="p-2 rounded text-black" />
-                            </div>
-
-                           
-                            <div className="flex flex-col gap-1">
-                                <label>Hotel Category *</label>
-                                <select className="p-2 rounded text-black">
-                                    <option>Select Hotel Category</option>
-                                    <option>3 Star</option>
-                                    <option>4 Star</option>
-                                    <option>5 Star</option>
-                                </select>
-                            </div>
-
-                           
-                            <div className="flex flex-col gap-1">
-                                <label>Room Type *</label>
-                                <select className="p-2 rounded text-black">
-                                     <option>Select Room Type</option>
-                                    <option>Base</option>
-                                    <option>Second</option>
-                                    <option>Third</option>
-                                </select>
-                            </div>
-
-                            
-                            <div className="flex flex-col gap-1">
-                                <label>No of Nights *</label>
-                                <input type="number" className="p-2 rounded text-black" />
-                            </div>
-
-                            
-                            <div className="flex flex-col gap-1">
-                                <label>No of Rooms *</label>
-                                <input type="number" className="p-2 rounded text-black" />
-                            </div>
-
-                            
-                            <div className="flex flex-col gap-1">
-                                <label>Check In Date *</label>
-                                <input type="date" className="p-2 rounded text-black" />
-                            </div>
-
-                            
-                            <div className="flex flex-col gap-1">
-                                <label>Check Out Date *</label>
-                                <input type="date" className="p-2 rounded text-black" />
-                            </div>
-
-                            
-                            <div className="flex flex-col gap-1">
-                                <label>Extra Bed / Child with Bed *</label>
-                                <select className="p-2 rounded text-black">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                </select>
-                            </div>
-
-                            
-                            <div className="flex flex-col gap-1">
-                                <label>Meal Plan *</label>
-                                <select className="p-2 rounded text-black">
-                                    <option>Room with no meal</option>
-                                    <option>Breakfast</option>
-                                    <option>Breakfast and Dinner</option>
-                                    <option>Breakfast with lunch dinner</option>
-                                </select>
-                            </div>
-
-                            
-                            <div className="flex flex-col gap-1 col-span-1 md:col-span-2">
-                                <label>Mobile No *</label>
-                                <input type="text" className="p-2 rounded text-black" />
-                            </div>
-
-                            
-                            <div className="flex flex-col gap-1 col-span-1 md:col-span-2">
-                                <label>Additional Information</label>
-                                <textarea className="p-2 rounded text-black"></textarea>
-                            </div>
-
-                            
-                            <button
-                                type="submit"
-                                className="col-span-1 md:col-span-2 bg-[#246e73] py-2 rounded text-white font-bold hover:bg-white hover:text-[#246e73] transition"
-                            >
-                                Submit
-                            </button>
-                        </form>
-                    </div>
+            <form
+              onSubmit={handleBookingSubmit}
+              className="grid grid-cols-1 md:grid-cols-2 gap-4"
+            >
+              {[
+                { label: "Booking code*", name: "booking_code", type: "text" },
+                { label: "First Guest Name *", name: "guest_name", type: "text" },
+                { label: "No of Rooms *", name: "rooms", type: "number" },
+                { label: "Check In Date *", name: "check_in", type: "date" },
+                { label: "Check Out Date *", name: "check_out", type: "date" },
+                { label: "Mobile No *", name: "mobile_no", type: "text" },
+              ].map((input) => (
+                <div key={input.name} className="flex flex-col gap-1">
+                  <label>{input.label}</label>
+                  <input
+                    type={input.type}
+                    name={input.name}
+                    value={bookingData[input.name]}
+                    onChange={handleBookingChange}
+                    className="p-2 rounded text-black"
+                    required
+                  />
                 </div>
+              ))}
 
+              <div className="flex flex-col gap-1">
+                <label>Total No. of Person *</label>
+                <select
+                  name="total_person"
+                  value={bookingData.total_person}
+                  onChange={handleBookingChange}
+                  className="p-2 rounded text-black"
+                  required
+                >
+                  <option value="">Select</option>
+                  {[2, 3, 4, 5, 6].map((n) => (
+                    <option key={n}>{n}</option>
+                  ))}
+                </select>
+              </div>
 
+              <div className="flex flex-col gap-1">
+                <label>Extra Bed</label>
+                <select
+                  name="extra_bed"
+                  value={bookingData.extra_bed}
+                  onChange={handleBookingChange}
+                  className="p-2 rounded text-black"
+                >
+                  {[1, 2, 3, 4, 5, 6].map((n) => (
+                    <option key={n}>{n}</option>
+                  ))}
+                </select>
+              </div>
 
+              <div className="flex flex-col gap-1">
+                <label>Child without Bed</label>
+                <select
+                  name="child_without_bed"
+                  value={bookingData.child_without_bed}
+                  onChange={handleBookingChange}
+                  className="p-2 rounded text-black"
+                >
+                  {[1, 2, 3, 4, 5, 6].map((n) => (
+                    <option key={n}>{n}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <label>Meal Plan *</label>
+                <select
+                  name="meal_plan"
+                  value={bookingData.meal_plan}
+                  onChange={handleBookingChange}
+                  className="p-2 rounded text-black"
+                  required
+                >
+                  <option value="">Select</option>
+                  <option>Room with no meal</option>
+                  <option>Breakfast</option>
+                  <option>Breakfast and Dinner</option>
+                  <option>Breakfast with lunch dinner</option>
+                </select>
+              </div>
+
+              <div className="flex flex-col gap-1 col-span-1 md:col-span-2">
+                <label>Additional Information</label>
+                <textarea
+                  name="additional_info"
+                  value={bookingData.additional_info}
+                  onChange={handleBookingChange}
+                  className="p-2 rounded text-black"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={submitting}
+                className="col-span-1 md:col-span-2 bg-[#246e73] py-2 rounded text-white font-bold hover:bg-white hover:text-[#246e73] transition"
+              >
+                {submitting ? "Submitting..." : "Submit"}
+              </button>
+            </form>
+
+            {responseMsg && (
+              <p className="text-center mt-4 font-semibold text-yellow-300">
+                {responseMsg}
+              </p>
             )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
