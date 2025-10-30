@@ -309,13 +309,13 @@ function PackageDetails() {
                 <label>Total No. of Person *</label>
                 <select
                   name="total_persons"
-                  value={bookingData.total_person}
+                  value={bookingData.total_persons}
                   onChange={handleBookingChange}
                   className="p-2 rounded text-black"
                   required
                 >
                   <option value="">Select</option>
-                  {[2, 3, 4, 5, 6].map((n) => (
+                  {[0,1,2, 3, 4, 5, 6].map((n) => (
                     <option key={n}>{n}</option>
                   ))}
                 </select>
@@ -329,7 +329,8 @@ function PackageDetails() {
                   onChange={handleBookingChange}
                   className="p-2 rounded text-black"
                 >
-                  {[1, 2, 3, 4, 5, 6].map((n) => (
+                  <option value="">Select</option>
+                  {[0,1, 2, 3, 4, 5, 6].map((n) => (
                     <option key={n}>{n}</option>
                   ))}
                 </select>
@@ -343,7 +344,8 @@ function PackageDetails() {
                   onChange={handleBookingChange}
                   className="p-2 rounded text-black"
                 >
-                  {[1, 2, 3, 4, 5, 6].map((n) => (
+                  <option value="">Select</option>
+                  {[0,1, 2, 3, 4, 5, 6].map((n) => (
                     <option key={n}>{n}</option>
                   ))}
                 </select>
