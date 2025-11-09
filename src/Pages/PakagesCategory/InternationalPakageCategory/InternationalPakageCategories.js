@@ -7,14 +7,20 @@ function InternationalPakageCategories() {
   const sectionRefs = useRef({});
   const [activeSection, setActiveSection] = useState(null);
 
-  // ✅ Scroll Observer (safe for client only)
+  // ✅ Safe IntersectionObserver (works fine with SSR)
   useEffect(() => {
-    if (typeof window === "undefined") return; // skip on SSR
+    // Exit early if SSR or API unavailable
+    if (typeof window === "undefined" || !("IntersectionObserver" in window))
+      return;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries.find((entry) => entry.isIntersecting);
-        if (visible) setActiveSection(visible.target.id);
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+            break;
+          }
+        }
       },
       { threshold: 0.3 }
     );
@@ -25,7 +31,6 @@ function InternationalPakageCategories() {
     return () => observer.disconnect();
   }, []);
 
-  // 🧩 Static data
   const destinations = {
     dubai: {
       name: "Dubai",
@@ -54,6 +59,7 @@ function InternationalPakageCategories() {
         },
       ],
     },
+
     thailand: {
       name: "Thailand",
       image:
@@ -72,39 +78,41 @@ function InternationalPakageCategories() {
         },
       ],
     },
-        maldives: {
+
+    maldives: {
       name: "Maldives",
       image:
-        "https://media.istockphoto.com/id/2149112736/photo/wat-arun-temple-at-sunset-bangkok-in-thailand.jpg",
+        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
       description:
-        "Thailand — the land of smiles! Explore stunning beaches, temples, floating markets, and mouth-watering street food.",
+        "The Maldives — a tropical paradise of crystal-clear waters, white sand beaches, and luxurious overwater villas. Perfect for couples and honeymooners.",
       packages: [
         {
           id: 1,
-          title: "Bangkok & Pattaya Tour",
-          type: "Couple",
-          price: "25999",
-          package_code: "TH-001",
+          title: "Romantic Maldives Getaway",
+          type: "Honeymoon",
+          price: "69999",
+          package_code: "MDV-001",
           image:
-            "https://images.unsplash.com/photo-1601233740629-1f7c7d8a7db7",
+            "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
         },
       ],
     },
-        indonesia: {
+
+    indonesia: {
       name: "Indonesia",
       image:
-        "https://media.istockphoto.com/id/2149112736/photo/wat-arun-temple-at-sunset-bangkok-in-thailand.jpg",
+        "https://images.unsplash.com/photo-1549887534-3db1bd59dcca",
       description:
-        "Thailand — the land of smiles! Explore stunning beaches, temples, floating markets, and mouth-watering street food.",
+        "Indonesia — home to stunning islands like Bali, rich culture, temples, and breathtaking landscapes. A perfect blend of adventure and relaxation.",
       packages: [
         {
           id: 1,
-          title: "Bangkok & Pattaya Tour",
-          type: "Couple",
-          price: "25999",
-          package_code: "TH-001",
+          title: "Bali Island Tour",
+          type: "Adventure",
+          price: "34999",
+          package_code: "IDN-001",
           image:
-            "https://images.unsplash.com/photo-1601233740629-1f7c7d8a7db7",
+            "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
         },
       ],
     },
@@ -122,7 +130,7 @@ function InternationalPakageCategories() {
 
   return (
     <>
-      {/* Top banner */}
+      {/* 🔹 Hero Section */}
       <div
         className="relative w-full h-60 md:h-96 bg-cover bg-center flex items-center justify-center"
         style={{ backgroundImage: `url(${locationData.image})` }}
@@ -133,7 +141,7 @@ function InternationalPakageCategories() {
         </h2>
       </div>
 
-      {/* About Section */}
+      {/* 🔹 About Section */}
       <div className="p-6 shadow-md m-6 bg-white rounded-lg">
         <h2 className="text-2xl font-bold mb-2">
           About {locationData.name}
@@ -141,23 +149,30 @@ function InternationalPakageCategories() {
         <p className="text-gray-700">{locationData.description}</p>
       </div>
 
-      {/* Packages */}
+      {/* 🔹 Packages Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-6 mb-10">
         {locationData.packages.map((pkg) => (
           <div
             key={pkg.id}
             className="border rounded-lg shadow hover:shadow-lg transition hover:scale-[1.02] bg-white p-4 cursor-pointer"
           >
-            <img
-              src={pkg.image}
-              alt={pkg.title}
-              className="w-full h-40 object-cover rounded-md"
-            />
+            <div className="relative">
+              <img
+                src={pkg.image}
+                alt={pkg.title}
+                className="w-full h-40 object-cover rounded-md"
+              />
+              <span className="absolute top-2 left-2 bg-black/60 text-white text-xs font-semibold px-2 py-1 rounded">
+                {pkg.type}
+              </span>
+            </div>
             <h3 className="text-lg font-semibold mt-3">
               {pkg.type} PACKAGE
             </h3>
             <h4 className="font-semibold">{pkg.title}</h4>
-            <p className="text-gray-500 text-sm">Code: {pkg.package_code}</p>
+            <p className="text-gray-500 text-sm">
+              Code: {pkg.package_code}
+            </p>
             <h4 className="text-blue-600 font-bold text-xl mt-2">
               ₹{pkg.price}/-
             </h4>
