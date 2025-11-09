@@ -54,7 +54,6 @@ function PackageRegister() {
     setLoading(true);
 
     try {
-      // ✅ Use FormData because backend expects form-data, not JSON
       const formDataToSend = new FormData();
       formDataToSend.append("full_name", formData.full_name);
       formDataToSend.append("email", formData.email);
@@ -72,7 +71,6 @@ function PackageRegister() {
       console.log("✅ Register API Response:", data);
 
       if (data.status === true) {
-        alert("✅ Registration successful!");
         navigate("/login");
       } else {
         setError(data.message || "❌ Registration failed. Try again.");

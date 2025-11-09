@@ -5,6 +5,9 @@ import Footer from "../../../Components/Footer/Footer";
 import ViewMoreDomestic from "./ViewMoreDomestic";
 import ViewMoreInternational from "./ViewMoreInternational";
 import ViewMorePan from "./ViewMorePan";
+import DomesticPackages from "../../../Components/Home/Pakages/DomesticPakages";
+import InternationalPakages from "../../../Components/Home/Pakages/InternationalPakages";
+import PanIndia from "../../../Components/Home/Pakages/PanIndia";
 
 function ShowPakages() {
   useEffect(() => {
@@ -65,9 +68,9 @@ function ShowPakages() {
         </div>
 
          
-        <ViewMoreDomestic />
-        <ViewMoreInternational />
-        <ViewMorePan />
+        <DomesticPackages/>
+        <InternationalPakages/>
+        <PanIndia/>
 
         <Footer />
       </div>

@@ -71,7 +71,7 @@ function TourPackages() {
     return <p className="text-center text-red-500 mt-10 font-semibold">{error}</p>;
   if (!locationData) return null;
 
-  // 🧮 Group packages by duration dynamically
+
   const groupedPackages = packages.reduce((acc, pkg) => {
     const duration = pkg.duration || "Others";
     if (!acc[duration]) acc[duration] = [];
@@ -88,7 +88,7 @@ function TourPackages() {
 
   return (
     <>
-      {/* Hero Section */}
+      
       <div
         className="relative w-full h-60 md:h-96 bg-cover bg-center flex items-center justify-center"
         style={{
@@ -101,7 +101,7 @@ function TourPackages() {
         </h2>
       </div>
 
-      {/* About Section */}
+      
       <div className="p-4 shadow-md m-4 md:m-6 bg-white rounded-lg">
         <h2 className="text-xl md:text-2xl font-bold py-2">
           About {locationData.name}
@@ -113,16 +113,15 @@ function TourPackages() {
       </div>
 
       <div className="flex flex-col md:flex-row mt-10 px-4 md:px-6">
-        {/* Sidebar Navigation (Desktop) */}
+        
         <aside className="hidden md:block w-1/4 sticky top-24 h-fit bg-white shadow-md rounded-lg p-4">
           <h2 className="font-bold text-lg mb-3">PACKAGES</h2>
           <ul className="space-y-2 text-gray-700 font-medium">
             {sections.map((s) => (
               <li
                 key={s.id}
-                className={`cursor-pointer rounded p-1 ${
-                  activeSection === s.id ? "text-blue-600 font-semibold" : ""
-                }`}
+                className={`cursor-pointer rounded p-1 ${activeSection === s.id ? "text-blue-600 font-semibold" : ""
+                  }`}
                 onClick={() => {
                   sectionRefs.current[s.id]?.scrollIntoView({ behavior: "smooth" });
                 }}
@@ -133,16 +132,15 @@ function TourPackages() {
           </ul>
         </aside>
 
-        {/* Mobile Tabs */}
+        
         <div className="md:hidden sticky top-20 z-20 bg-white shadow-md overflow-x-auto whitespace-nowrap flex gap-4 px-4 py-2">
           {sections.map((s) => (
             <button
               key={s.id}
-              className={`px-3 py-1 rounded-full text-sm ${
-                activeSection === s.id
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-100 text-gray-700"
-              }`}
+              className={`px-3 py-1 rounded-full text-sm ${activeSection === s.id
+                ? "bg-blue-600 text-white"
+                : "bg-gray-100 text-gray-700"
+                }`}
               onClick={() => {
                 sectionRefs.current[s.id]?.scrollIntoView({ behavior: "smooth" });
               }}
@@ -152,7 +150,7 @@ function TourPackages() {
           ))}
         </div>
 
-        {/* Package Display */}
+        
         <main className="w-full md:w-3/4 md:ml-6 space-y-12 mt-4 md:mt-0">
           {sections.map((s) => (
             <section
@@ -171,15 +169,24 @@ function TourPackages() {
                     key={pkg.id}
                     className="border rounded-lg shadow hover:shadow-lg transition hover:scale-[1.02] bg-white p-3 md:p-4 cursor-pointer"
                   >
-                    <img
-                      src={
-                        pkg.image
-                          ? `${IMAGE_BASE_URL}${pkg.image}`
-                          : "https://via.placeholder.com/400x250"
-                      }
-                      alt={pkg.title}
-                      className="w-full h-36 md:h-40 object-cover rounded-md"
-                    />
+                    <div className="relative">
+                      <img
+                        src={
+                          pkg.image
+                            ? `${IMAGE_BASE_URL}${pkg.image}`
+                            : "https://via.placeholder.com/400x250"
+                        }
+                        alt={pkg.title}
+                        className="w-full h-36 md:h-40 object-cover rounded-md"
+                      />
+
+                      
+                     
+                    </div>
+
+                    <h3 className="text-center md:text-lg font-semibold mt-3">
+                      {pkg.type} PACKAGE
+                    </h3>
                     <h3 className="text-base md:text-lg font-semibold mt-3">
                       {pkg.title}
                     </h3>
@@ -208,6 +215,7 @@ function TourPackages() {
             </section>
           ))}
         </main>
+
       </div>
     </>
   );

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 function PanIndia() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate()
   const packages = [
     {
@@ -37,22 +39,27 @@ function PanIndia() {
       img: "https://t2tworld.com/wp-content/uploads/2023/07/image-1-2.png",
     },
   ];
+  useEffect(() => {
+    const user = localStorage.getItem("travchap_user");
+    setIsLoggedIn(!!user);
+  }, []);
+  const createSlug = (title) => title.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <div className="px-4 sm:px-6  py-10 bg-gray-50">
-      
+
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold  text-[#246e73] mb-10">
         Pan India Hotels
       </h2>
 
-      
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {packages.map((pkg, index) => (
           <div
             key={index}
             className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition duration-300 group"
           >
-            
+
             <div className="overflow-hidden">
               <img
                 src={pkg.img}
@@ -61,17 +68,22 @@ function PanIndia() {
               />
             </div>
 
-            
+
             <h3 className="text-center text-lg font-semibold text-gray-800 py-3 border-t">
               {pkg.title}
             </h3>
 
-            
+
             <div className="p-4 flex flex-col justify-between">
-              <button className="mt-4 w-full border border-[#246e73] text-[#246e73] px-4 py-2 rounded-lg font-medium hover:bg-[#246e73] hover:text-white transition"
-              onClick={()=> navigate('/login')}
+              <button
+                className="mt-4 w-full border border-[#246e73] text-[#246e73] px-4 py-2 rounded-lg font-medium hover:bg-[#246e73] hover:text-white transition"
+                onClick={() =>
+                  isLoggedIn
+                    ? navigate(`/hotels/${createSlug(pkg.title)}`)
+                    : navigate("/login")
+                }
               >
-                LOGIN TO CHECK
+                {isLoggedIn ? "View More" : "Login to Check"}
               </button>
             </div>
           </div>

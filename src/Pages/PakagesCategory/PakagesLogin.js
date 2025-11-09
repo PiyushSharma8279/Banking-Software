@@ -46,7 +46,6 @@ function PakagesLogin() {
       console.log("✅ Login API Response:", data);
 
       if (data.status === true || data.status === "success") {
-        alert("✅ Login successful!");
         localStorage.setItem("travchap_user", JSON.stringify(data.data));
         setUser(data.data);
       } else {

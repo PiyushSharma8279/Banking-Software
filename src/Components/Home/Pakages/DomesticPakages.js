@@ -3,23 +3,15 @@ import { useNavigate } from "react-router-dom";
 
 function DomesticPackages() {
   const navigate = useNavigate();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const IMAGE_BASE_URL = "https://demandonsale.com/trav-chap/uploads/location/";
-  const API_URL = `https://api.allorigins.win/raw?url=${encodeURIComponent(
-    "https://demandonsale.com/trav-chap/api/locations/list"
-  )}`;
+  const API_URL =
+    "https://api.codetabs.com/v1/proxy?quest=https://demandonsale.com/trav-chap/api/locations/list";
 
- 
-  useEffect(() => {
-    const user = localStorage.getItem("travchap_user");
-    setIsLoggedIn(!!user); // true if user data exists
-  }, []);
-
-  
   useEffect(() => {
     const fetchPackages = async () => {
       try {
@@ -43,6 +35,10 @@ function DomesticPackages() {
 
     fetchPackages();
   }, []);
+  useEffect(() => {
+    const user = localStorage.getItem("travchap_user");
+    setIsLoggedIn(!!user);
+  }, []);
 
   return (
     <div className="px-4 sm:px-6 py-10 bg-gray-50 min-h-screen">
@@ -50,7 +46,6 @@ function DomesticPackages() {
         Domestic Packages
       </h2>
 
-      {/* Loading Skeleton */}
       {loading && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {[...Array(8)].map((_, i) => (
@@ -59,14 +54,12 @@ function DomesticPackages() {
         </div>
       )}
 
-      
       {error && (
         <p className="text-center text-red-500 mt-4">
           Error loading packages: {error}
         </p>
       )}
 
-    
       {!loading && !error && packages.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {packages.map((pkg) => (
@@ -88,13 +81,12 @@ function DomesticPackages() {
               <h3 className="text-center text-lg font-semibold text-gray-800 py-3 border-t px-2 truncate">
                 {pkg.name || "Unknown Destination"}
               </h3>
-
               <div className="p-4 flex flex-col justify-between">
                 <button
                   className="mt-4 w-full border border-[#246e73] text-[#246e73] px-4 py-2 rounded-lg font-medium hover:bg-[#246e73] hover:text-white transition"
                   onClick={() =>
                     isLoggedIn
-                      ? navigate(`/tour-pakages/${pkg.slug}`)
+                      ? navigate(`/${pkg.slug}/tour-pakages`)
                       : navigate("/login")
                   }
                 >
@@ -106,7 +98,6 @@ function DomesticPackages() {
         </div>
       )}
 
-      
       {!loading && !error && packages.length === 0 && (
         <p className="text-center text-gray-500">No packages found.</p>
       )}

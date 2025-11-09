@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import Homepage from "./Pages/Homepage";
 import ContentContactUs from "./Pages/ContactUs/ContentContactUs";
 import ContentPakage from "./Pages/PakagesCategory/ContentPakage";
@@ -11,6 +10,7 @@ import PakageDetailsContent from "./Pages/TourPakages/TourPakageDetailspage/Paka
 import PakageRegisterContent from "./Pages/PakagesCategory/PakageRegister/PakageRegisterContent";
 import HelpContent from "./Pages/Help/HelpContent";
 import DomesticPackages from "./Components/Home/Pakages/DomesticPakages";
+import InternationalContent from "./Pages/PakagesCategory/InternationalPakageCategory/InternationalContent";
 
 function App() {
   return (
@@ -23,11 +23,13 @@ function App() {
     <Route path="/register" element={<PakageRegisterContent/>}/>
     <Route path="/about" element={<ContentAbout/>}/>
     <Route path="/pakages" element={<ShowPakages/>}/>
-    <Route path="/tour-pakages/:category" element={<TourPakagesContent/>}/>
+    <Route path=":category/tour-pakages" element={<TourPakagesContent/>}/>
     <Route path="/hotels/:category" element={<ContentHotelsGrid/>}/>
     <Route path="/package/:slug" element={<PakageDetailsContent/>}/>
     <Route path="/help" element={<HelpContent/>}/>
     <Route path="/domestic" element={<DomesticPackages/>}/>
+    <Route path="/international-pakage/:slug" element={<InternationalContent />} />
+
   </Routes>
   
   </BrowserRouter>
