@@ -7,8 +7,10 @@ function InternationalPakageCategories() {
   const sectionRefs = useRef({});
   const [activeSection, setActiveSection] = useState(null);
 
-  // 🧭 Scroll Observer for sidebar highlight
+  // ✅ Scroll Observer (safe for client only)
   useEffect(() => {
+    if (typeof window === "undefined") return; // skip on SSR
+
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.find((entry) => entry.isIntersecting);
@@ -17,7 +19,9 @@ function InternationalPakageCategories() {
       { threshold: 0.3 }
     );
 
-    Object.values(sectionRefs.current).forEach((el) => observer.observe(el));
+    const sections = Object.values(sectionRefs.current).filter(Boolean);
+    sections.forEach((el) => observer.observe(el));
+
     return () => observer.disconnect();
   }, []);
 
@@ -25,7 +29,8 @@ function InternationalPakageCategories() {
   const destinations = {
     dubai: {
       name: "Dubai",
-      image: "https://media.istockphoto.com/id/467829216/photo/dubai-marina.jpg?s=612x612",
+      image:
+        "https://media.istockphoto.com/id/467829216/photo/dubai-marina.jpg?s=612x612",
       description:
         "Experience the glitz and glamour of Dubai — where futuristic architecture meets traditional souks. Enjoy desert safaris, luxury shopping, and stunning skyline views.",
       packages: [
@@ -51,6 +56,42 @@ function InternationalPakageCategories() {
     },
     thailand: {
       name: "Thailand",
+      image:
+        "https://media.istockphoto.com/id/2149112736/photo/wat-arun-temple-at-sunset-bangkok-in-thailand.jpg",
+      description:
+        "Thailand — the land of smiles! Explore stunning beaches, temples, floating markets, and mouth-watering street food.",
+      packages: [
+        {
+          id: 1,
+          title: "Bangkok & Pattaya Tour",
+          type: "Couple",
+          price: "25999",
+          package_code: "TH-001",
+          image:
+            "https://images.unsplash.com/photo-1601233740629-1f7c7d8a7db7",
+        },
+      ],
+    },
+        maldives: {
+      name: "Maldives",
+      image:
+        "https://media.istockphoto.com/id/2149112736/photo/wat-arun-temple-at-sunset-bangkok-in-thailand.jpg",
+      description:
+        "Thailand — the land of smiles! Explore stunning beaches, temples, floating markets, and mouth-watering street food.",
+      packages: [
+        {
+          id: 1,
+          title: "Bangkok & Pattaya Tour",
+          type: "Couple",
+          price: "25999",
+          package_code: "TH-001",
+          image:
+            "https://images.unsplash.com/photo-1601233740629-1f7c7d8a7db7",
+        },
+      ],
+    },
+        indonesia: {
+      name: "Indonesia",
       image:
         "https://media.istockphoto.com/id/2149112736/photo/wat-arun-temple-at-sunset-bangkok-in-thailand.jpg",
       description:
