@@ -28,7 +28,7 @@ function App() {
     <Route path="/package/:slug" element={<PakageDetailsContent/>}/>
     <Route path="/help" element={<HelpContent/>}/>
     <Route path="/domestic" element={<DomesticPackages/>}/>
-    <Route path="/international-pakage/:slug" element={<InternationalContent />} />
+    {/* <Route path="/international-pakage/:slug" element={<InternationalContent />} /> */}
 
   </Routes>
   
